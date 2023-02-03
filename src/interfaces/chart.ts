@@ -27,3 +27,21 @@ export interface IMarketChartData {
   market_caps: ILineData[],
   total_volumes: ILineData[]
 }
+
+export interface IChartProps {
+  colors: {
+    backgroundColor?: string,
+    lineColor?: string,
+    textColor?: string,
+    areaTopColor?: string,
+    areaBottomColor?: string,
+  }
+}
+
+export interface ILineChartProps extends IChartProps {
+  data: ILineData[],
+}
+
+export interface ICandleChartProps extends IChartProps {
+  data: ICandleData[],
+}
