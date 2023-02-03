@@ -51,4 +51,4 @@ export const coingeckoApi = createApi({
   })
 })
 
-export const { useGetCoinsQuery } = coingeckoApi;
+export const { useGetCoinsQuery, useLazyGetCoinLineChartQuery, useLazyGetCoinCandleChartQuery } = coingeckoApi;
