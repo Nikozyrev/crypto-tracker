@@ -1,4 +1,4 @@
-import { UTCTimestamp } from "lightweight-charts";
+import { ColorType, createChart, UTCTimestamp } from "lightweight-charts";
 import { ResponseCandleData, ResponseLineData } from "../interfaces/chart";
 
 export const marketDataLineAdapter = (data: ResponseLineData[]) => data.map(el => ({
@@ -13,3 +13,30 @@ export const marketDataCandleAdapter = (data: ResponseCandleData[]) => data.map(
   low: el[3],
   close: el[4],
 }))
+
+export const createBaseChart = (target: HTMLElement, backgroundColor: string, textColor: string) => {
+	const handleResize = () => {
+		chart.applyOptions({ width: target.clientWidth });
+	};
+
+	const chart = createChart(target, {
+		layout: {
+			background: { type: ColorType.Solid, color: backgroundColor },
+			textColor,
+		},
+		width: target.clientWidth,
+		height: 300,
+	});
+	chart.timeScale().fitContent();
+
+	window.addEventListener('resize', handleResize);
+
+	return {
+		chart,
+		removeChart: () => {
+			window.removeEventListener('resize', handleResize);
+
+			chart.remove();
+		}
+	};
+}
