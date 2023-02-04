@@ -1,7 +1,9 @@
+import { CoinsMain } from "../../components/CoinsMain";
+
 export const MainPage = () => {
   return (
     <main className="main">
-      MainPage
+      <CoinsMain />
     </main>
   );
 }
