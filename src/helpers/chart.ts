@@ -1,5 +1,8 @@
 import { ColorType, createChart, UTCTimestamp } from "lightweight-charts";
-import { ResponseCandleData, ResponseLineData } from "../interfaces/chart";
+import { GRAY_CHART, GREEN_CHART, RED_CHART } from "../constants/chart";
+import { useAppSelector } from "../hooks/redux";
+import { ILineData, ResponseCandleData, ResponseLineData } from "../interfaces/chart";
+import { priceFormatter } from "./price";
 
 export const marketDataLineAdapter = (data: ResponseLineData[]) => data.map(el => ({
   time: el[0] / 1000 as UTCTimestamp,
@@ -14,29 +17,55 @@ export const marketDataCandleAdapter = (data: ResponseCandleData[]) => data.map(
   close: el[4],
 }))
 
-export const createBaseChart = (target: HTMLElement, backgroundColor: string, textColor: string) => {
-	const handleResize = () => {
-		chart.applyOptions({ width: target.clientWidth });
-	};
+export const createBaseChart = (target: HTMLElement, currency: string, backgroundColor: string, textColor: string) => {  
+  const handleResize = () => {
+    chart.applyOptions({ width: target.clientWidth });
+  };
 
-	const chart = createChart(target, {
-		layout: {
-			background: { type: ColorType.Solid, color: backgroundColor },
-			textColor,
-		},
-		width: target.clientWidth,
-		height: 300,
-	});
-	chart.timeScale().fitContent();
+  const chart = createChart(target, {
+    layout: {
+      background: { type: ColorType.Solid, color: backgroundColor },
+      textColor,
+    },
+    width: target.clientWidth,
+    height: 300,
+  });
+  chart.timeScale().fitContent();
+  chart.timeScale().applyOptions({
+    fixLeftEdge: true,
+    fixRightEdge: true,
+    timeVisible: true
+  })
 
-	window.addEventListener('resize', handleResize);
+  chart.applyOptions({
+    localization: {
+      priceFormatter: priceFormatter(currency),
+    },
+  });
 
-	return {
-		chart,
-		removeChart: () => {
-			window.removeEventListener('resize', handleResize);
+  window.addEventListener('resize', handleResize);
 
-			chart.remove();
-		}
-	};
+  return {
+    chart,
+    removeChart: () => {
+      window.removeEventListener('resize', handleResize);
+
+      chart.remove();
+    }
+  };
+}
+
+export const pickLineChartColors = (data: ILineData[]) => {
+  const openPrice = data[0].value;
+  const closePrice = data[data.length - 1].value;
+  switch (true) {
+    case openPrice < closePrice:
+      return GREEN_CHART;
+    case openPrice > closePrice:
+      return RED_CHART;
+    case openPrice === closePrice:
+      return GRAY_CHART;
+    default:
+      return {};
+  }
 }

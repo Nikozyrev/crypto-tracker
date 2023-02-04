@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef } from "react";
 import { createBaseChart } from "../../../helpers/chart";
+import { useAppSelector } from "../../../hooks/redux";
 import { ILineChartProps } from "../../../interfaces/chart";
 
 export const LineChart: FC<ILineChartProps> = props => {
@@ -13,11 +14,11 @@ export const LineChart: FC<ILineChartProps> = props => {
       areaBottomColor = 'rgba(41, 98, 255, 0.28)',
     } = {},
   } = props;
-
+  const { currency } = useAppSelector(state => state.currency);
   const chartContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-      const {chart, removeChart} = createBaseChart(chartContainerRef.current!, backgroundColor, textColor);
+      const {chart, removeChart} = createBaseChart(chartContainerRef.current!, currency, backgroundColor, textColor);
 
       const newSeries = chart.addAreaSeries({ lineColor, topColor: areaTopColor, bottomColor: areaBottomColor });
       newSeries.setData(data);

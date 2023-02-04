@@ -29,7 +29,7 @@ export interface IMarketChartData {
 }
 
 export interface IChartProps {
-  colors: {
+  colors?: {
     backgroundColor?: string,
     lineColor?: string,
     textColor?: string,
