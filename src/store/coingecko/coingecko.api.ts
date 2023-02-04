@@ -12,7 +12,8 @@ export const coingeckoApi = createApi({
       query: (currency: CURRENCIES) => ({
         url: '/coins/markets',
         params: {
-          vs_currency: currency
+          vs_currency: currency,
+					price_change_percentage: '1h,24h,7d'
         },
       })
     })
