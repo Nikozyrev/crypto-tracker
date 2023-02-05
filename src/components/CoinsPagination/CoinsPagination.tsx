@@ -1,5 +1,5 @@
 import './CoinsPagination.scss';
 
 export const CoinsPagination = () => {
-   return <div></div>;
+   return <div className="coins__pagination"></div>;
 };

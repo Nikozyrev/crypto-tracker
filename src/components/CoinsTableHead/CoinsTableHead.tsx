@@ -1,19 +1,42 @@
+import { ICoin } from '../../interfaces/coin';
 import './CoinsTableHead.scss';
+
+interface CoinsTableHead {
+   sortElements: (e: React.MouseEvent) => ICoin[] | undefined;
+}
 
 export const CoinsTableHead = () => {
    return (
       <thead>
-         <tr>
-            <th className="coins__favorites"></th>
-            <td className="coins__num">#</td>
-            <th className="coins__name">Coin</th>
-            <th className="coins__price">Price</th>
-            <th className="coins__time1h">1h</th>
-            <th className="coins__time24h">24h</th>
-            <th className="coins__time7d">7d</th>
-            <th className="coins__volume">24h Volume</th>
-            <th className="coins__market-cap">Mkt Cap</th>
-            <th className="coins__graph">Last 7 Days</th>
+         <tr className="coins__head">
+            <th id="favourites" className="thead"></th>
+            <th id="market_cap_rank" className="thead">
+               #
+            </th>
+            <th id="name" className="thead">
+               Coin
+            </th>
+            <th id="current_price" className="thead">
+               Price
+            </th>
+            <th id="price_change_percentage_1h_in_currency" className="thead">
+               1h
+            </th>
+            <th id="price_change_percentage_24h_in_currency" className="thead">
+               24h
+            </th>
+            <th id="price_change_percentage_7d_in_currency" className="thead">
+               7d
+            </th>
+            <th id="total_volume" className="thead">
+               24h Volume
+            </th>
+            <th id="market_cap" className="thead">
+               Mkt Cap
+            </th>
+            <th id="" className="thead">
+               Last 7 Days
+            </th>
          </tr>
       </thead>
    );
