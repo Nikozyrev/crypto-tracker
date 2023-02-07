@@ -1,0 +1,21 @@
+.chart {
+  padding: 1%;
+}
+
+.chart__control {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.chart-control-btn {
+  padding: 0.1em;
+  background-color: white;
+  cursor: pointer;
+}
+
+.chart-control-btn._active {
+  background-color: rgba(128, 128, 128, 0.6);
+}
