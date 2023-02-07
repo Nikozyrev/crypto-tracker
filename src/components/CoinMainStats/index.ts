@@ -1,0 +1,1 @@
+export { CoinMainStats } from './CoinMainStats';

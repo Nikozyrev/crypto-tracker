@@ -1,4 +1,4 @@
-export const priceFormatter = (currency: string) => Intl.NumberFormat(window.navigator.languages[0], {
+export const priceFormatter = (currency: string) => Intl.NumberFormat('en', {
   style: "currency",
   currency: currency.toUpperCase(),
 }).format;

@@ -1,0 +1,1 @@
+export { CoinDailyPriceRange } from './CoinDailyPriceRange';
