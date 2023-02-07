@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CURRENCIES } from '../../constants/currencies';
 import { ICoin } from '../../interfaces/coin';
+import { IExchange } from '../../interfaces/exchanges';
 
 export const coingeckoApi = createApi({
   reducerPath: 'coingecko/api',
@@ -15,8 +16,13 @@ export const coingeckoApi = createApi({
           vs_currency: currency
         },
       })
+    }),
+		getExchanges: build.query<IExchange[], void>({
+      query: () => ({
+        url: '/exchanges',
+      })
     })
   })
 })
 
-export const { useGetCoinsQuery } = coingeckoApi;
+export const { useGetCoinsQuery, useGetExchangesQuery } = coingeckoApi;

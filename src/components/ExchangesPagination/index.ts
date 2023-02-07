@@ -1,0 +1,1 @@
+export { ExchangesPagination } from './ExchangesPagination';
