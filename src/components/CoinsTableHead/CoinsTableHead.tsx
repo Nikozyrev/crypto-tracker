@@ -1,9 +1,4 @@
-import { ICoin } from '../../interfaces/coin';
 import './CoinsTableHead.scss';
-
-interface CoinsTableHead {
-   sortElements: (e: React.MouseEvent) => ICoin[] | undefined;
-}
 
 export const CoinsTableHead = () => {
    return (
