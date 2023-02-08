@@ -1,9 +1,10 @@
+import { HeaderNav } from '../HeaderNav';
 import './Header.scss';
 
 export const Header = () => {
   return (
-    <div>
-      
-    </div>
+    <header className='header'>
+      <HeaderNav/>
+    </header>
   );
 }
