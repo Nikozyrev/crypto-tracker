@@ -17,6 +17,11 @@ export const coingeckoApi = createApi({
     baseUrl: 'https://api.coingecko.com/api/v3'
   }),
   endpoints: build => ({
+    getSupportedVsCurrencies: build.query<CURRENCIES[], void>({
+      query: () => ({
+        url: '/simple/supported_vs_currencies',
+      })
+    }),
     getCoins: build.query<ICoin[], string>({
       query: (currency: CURRENCIES) => ({
         url: '/coins/markets',
@@ -60,7 +65,8 @@ export const coingeckoApi = createApi({
   })
 })
 
-export const { 
+export const {
+  useGetSupportedVsCurrenciesQuery,
   useGetCoinsQuery,
   useGetCoinQuery,
   useLazyGetCoinLineChartQuery,

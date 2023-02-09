@@ -16,7 +16,7 @@ export const useChartData = (id: string, chartMode: CHART_MODES, dataMode: CHART
     if (chartMode === CHART_MODES.CANDLE) {
       fetchCandleChart(fetchProps, true);
     }
-  }, [chartMode, dataPeriod])
+  }, [currency, chartMode, dataPeriod])
 
   if (chartMode === CHART_MODES.LINE) {
     if (dataMode === CHART_DATA_MODES.PRICE) {
