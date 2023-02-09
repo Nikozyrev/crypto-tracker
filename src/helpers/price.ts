@@ -1,4 +1,13 @@
-export const priceFormatter = (currency: string) => Intl.NumberFormat(window.navigator.languages[0], {
-  style: "currency",
-  currency: currency.toUpperCase(),
-}).format;
+export const priceFormatter = (currency: string) => {
+  try {
+    return Intl.NumberFormat(window.navigator.language, {
+        style: "currency",
+        currency: currency.toUpperCase(),
+      }).format;
+  } catch {
+    return (price: number) => 
+    `${price.toLocaleString(window.navigator.language, {
+        minimumFractionDigits: 2,
+      })} ${currency.toLocaleUpperCase()}`;  
+  }
+}
