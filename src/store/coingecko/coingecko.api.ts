@@ -4,6 +4,7 @@ import { marketDataCandleAdapter, marketDataLineAdapter } from '../../helpers/ch
 import { ICandleData, IMarketChartData, IMarketChartResponse, ResponseCandleData } from '../../interfaces/chart';
 import { ICoin } from '../../interfaces/coin';
 import { ICoinDetailed } from '../../interfaces/coinDetailed';
+import { ICoinSearched } from '../../interfaces/coinSearched';
 
 interface ICoinMarketChartProps {
   id: string;
@@ -22,6 +23,15 @@ export const coingeckoApi = createApi({
         url: '/simple/supported_vs_currencies',
       })
     }),
+    searchCoins: build.query<ICoinSearched[], string>({
+      query: (query: string) => ({
+        url: '/search',
+        params: {
+          query
+        },
+      }),
+      transformResponse: (res: {coins: ICoinSearched[]}) => res.coins || [] 
+    }),    
     getCoins: build.query<ICoin[], string>({
       query: (currency: CURRENCIES) => ({
         url: '/coins/markets',
@@ -67,6 +77,7 @@ export const coingeckoApi = createApi({
 
 export const {
   useGetSupportedVsCurrenciesQuery,
+  useSearchCoinsQuery,
   useGetCoinsQuery,
   useGetCoinQuery,
   useLazyGetCoinLineChartQuery,
