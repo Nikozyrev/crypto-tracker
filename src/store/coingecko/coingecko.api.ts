@@ -4,6 +4,13 @@ import { marketDataCandleAdapter, marketDataLineAdapter } from '../../helpers/ch
 import { ICandleData, IMarketChartData, IMarketChartResponse, ResponseCandleData } from '../../interfaces/chart';
 import { ICoin } from '../../interfaces/coin';
 
+
+
+interface IGetCoinsProps{
+	currency: CURRENCIES,
+	page: number
+}
+
 interface ICoinMarketChartProps {
   id: string;
   vs_currency: CURRENCIES;
@@ -16,11 +23,13 @@ export const coingeckoApi = createApi({
     baseUrl: 'https://api.coingecko.com/api/v3'
   }),
   endpoints: build => ({
-    getCoins: build.query<ICoin[], string>({
-      query: (currency: CURRENCIES) => ({
+    getCoins: build.query<ICoin[], IGetCoinsProps >({
+      query: ({currency, page}: IGetCoinsProps) => ({
         url: '/coins/markets',
         params: {
-          vs_currency: currency
+          vs_currency: currency,
+					price_change_percentage: '1h,24h,7d',
+					page
         },
       })
     }),
