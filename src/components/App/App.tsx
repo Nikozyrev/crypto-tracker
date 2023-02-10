@@ -1,3 +1,4 @@
+
 import { Route, Routes } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { MainPage } from "../../pages/MainPage";
@@ -20,3 +21,4 @@ export const App = () => {
     </div>
   );
 }
+
