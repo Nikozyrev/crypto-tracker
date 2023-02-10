@@ -1,0 +1,14 @@
+.coin-name-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.coin-name {
+  font-weight: 700;
+}
+
+.coin-price-container {
+  display: flex;
+  gap: 0.5em;
+}

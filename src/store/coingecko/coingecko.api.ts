@@ -3,6 +3,7 @@ import { CURRENCIES } from '../../constants/currencies';
 import { marketDataCandleAdapter, marketDataLineAdapter } from '../../helpers/chart';
 import { ICandleData, IMarketChartData, IMarketChartResponse, ResponseCandleData } from '../../interfaces/chart';
 import { ICoin } from '../../interfaces/coin';
+import { ICoinDetailed } from '../../interfaces/coinDetailed';
 
 
 
@@ -33,6 +34,14 @@ export const coingeckoApi = createApi({
         },
       })
     }),
+    getCoin: build.query<ICoinDetailed, string>({
+      query: (id: string) => ({
+        url: `/coins/${id}`,
+        params: {
+          
+        },
+      })
+    }),
     getCoinLineChart: build.query<IMarketChartData, ICoinMarketChartProps>({
       query: ({id, vs_currency, days}) => ({
         url: `/coins/${id}/market_chart`,
@@ -60,4 +69,9 @@ export const coingeckoApi = createApi({
   })
 })
 
-export const { useGetCoinsQuery, useLazyGetCoinLineChartQuery, useLazyGetCoinCandleChartQuery } = coingeckoApi;
+export const { 
+  useGetCoinsQuery,
+  useGetCoinQuery,
+  useLazyGetCoinLineChartQuery,
+  useLazyGetCoinCandleChartQuery
+} = coingeckoApi;

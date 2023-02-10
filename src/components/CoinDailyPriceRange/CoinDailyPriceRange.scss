@@ -1,0 +1,23 @@
+.coin-24h-range {
+  
+}
+
+.range-outer {
+  width: 100%;
+  height: 7px;
+  background-color: rgb(186, 186, 186);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.range-inner {
+  height: 100%;
+  background: rgb(246,153,87);
+  background: linear-gradient(90deg, rgba(246,153,87,1) 0%, rgba(87,252,90,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+.range-text {
+  display: flex;
+  justify-content: space-between;
+}
