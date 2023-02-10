@@ -1,9 +1,15 @@
-import { CoinsMain } from '../../components/CoinsMain';
+
+import { useParams } from "react-router-dom";
+import { CoinChart } from "../../components/charts/CoinChart";
 
 export const CoinsPage = () => {
-   return (
-      <main className="main">
-         CoinsPage
-      </main>
-   );
-};
+  const { id } = useParams();
+
+  return (
+    <main className="main">
+      {id && (
+        <CoinChart id={id}/>
+      )}
+    </main>
+  );
+}
