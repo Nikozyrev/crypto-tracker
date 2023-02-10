@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ORDER } from '../../constants/order';
-import { coinKeys, sort } from '../../helpers/sort';
+import { sort } from '../../helpers/sort';
 import { ICoin } from '../../interfaces/coin';
 import { CoinsTableBody } from '../CoinsTableBody';
 import { CoinsTableHead } from '../CoinsTableHead';
@@ -13,28 +13,22 @@ interface CoinsTableProps {
 export const CoinsTable = ({ data }: CoinsTableProps) => {
    const [order, setOrder] = useState<ORDER>(ORDER.NONE);
    const [sorted, setSorted] = useState<ICoin[]>(data);
+   const [column, setColumn] = useState('');
 
    function sortElements(e: React.MouseEvent) {
       const target = e.target as HTMLElement;
-      if (target.tagName === 'TH') {
-         if (order === '') {
-            setOrder(ORDER.ASC);
-         }
-         if (order === ORDER.ASC) {
-            setOrder(ORDER.DESC);
-         }
-         if (order === ORDER.DESC) {
-            setOrder(ORDER.ASC);
-         }
-         const id = target.id as coinKeys;
-         const sorted = sort(data, id, order);
+      if (target.className.includes('thead_s')) {
+         const newOrder = order === ORDER.ASC ? ORDER.DESC : ORDER.ASC;
+         setOrder(newOrder);
+         setColumn(target.id)
+         const sorted = sort(data, target.id as keyof ICoin, newOrder);
          setSorted(sorted);
       }
    }
 
    return (
       <table className="coins__table" onClick={sortElements}>
-         <CoinsTableHead />
+         <CoinsTableHead order = {order} column = {column}/>
          <CoinsTableBody data={sorted} />
       </table>
    );

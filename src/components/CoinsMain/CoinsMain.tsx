@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useAppSelector } from '../../hooks/redux';
 
 import { useGetCoinsQuery } from '../../store/coingecko/coingecko.api';
@@ -7,7 +8,8 @@ import './CoinsMain.scss';
 
 export const CoinsMain = () => {
    const { currency } = useAppSelector((state) => state.currency);
-   const { data } = useGetCoinsQuery(currency);
+   const [page, setPage] = useState(1);
+   const { data } = useGetCoinsQuery({ currency, page });
 
    return (
       <div>

@@ -46,20 +46,12 @@ td {
    text-align: center;
 }
 
-/* #name::after{
-	content: "▲";
-	margin-left: 50%;
-} 
-
-#name::before{
-	content: "▼";
-}  */
-
-.thead:hover:after {
-	content: "▼";
+.ASC:after {
+   content: '▲';
+	 font-size:10px;
 }
 
-.thead:hover:active {
-	content: "▼";
-	
+.DESC:after {
+   content: '▼';
+	 font-size:10px;
 }
