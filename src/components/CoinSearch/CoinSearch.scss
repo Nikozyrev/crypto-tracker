@@ -1,0 +1,32 @@
+.coin-search__container {
+  position: relative;
+}
+
+.coin-search__drop-down {
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 10px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.coin-search__item {
+  padding: 5px;
+
+  &:hover {
+    background-color: gray;
+    color: white;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+.coin-search__rank {
+  margin-left: auto;
+}

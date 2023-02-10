@@ -4,8 +4,8 @@ import { marketDataCandleAdapter, marketDataLineAdapter } from '../../helpers/ch
 import { ICandleData, IMarketChartData, IMarketChartResponse, ResponseCandleData } from '../../interfaces/chart';
 import { ICoin } from '../../interfaces/coin';
 import { ICoinDetailed } from '../../interfaces/coinDetailed';
-
-
+import { ICoinSearched } from '../../interfaces/coinSearched';
+import { IGlobalData } from '../../interfaces/globalData';
 
 interface IGetCoinsProps{
 	currency: CURRENCIES,
@@ -24,6 +24,26 @@ export const coingeckoApi = createApi({
     baseUrl: 'https://api.coingecko.com/api/v3'
   }),
   endpoints: build => ({
+    getSupportedVsCurrencies: build.query<CURRENCIES[], void>({
+      query: () => ({
+        url: '/simple/supported_vs_currencies',
+      })
+    }),
+    getGlobalData: build.query<IGlobalData, void>({
+      query: () => ({
+        url: '/global',
+      }),
+      transformResponse: (res: {data: IGlobalData}) => res.data 
+    }),
+    searchCoins: build.query<ICoinSearched[], string>({
+      query: (query: string) => ({
+        url: '/search',
+        params: {
+          query
+        },
+      }),
+      transformResponse: (res: {coins: ICoinSearched[]}) => res.coins || [] 
+    }),
     getCoins: build.query<ICoin[], IGetCoinsProps >({
       query: ({currency, page}: IGetCoinsProps) => ({
         url: '/coins/markets',
@@ -69,7 +89,10 @@ export const coingeckoApi = createApi({
   })
 })
 
-export const { 
+export const {
+  useGetSupportedVsCurrenciesQuery,
+  useGetGlobalDataQuery,
+  useSearchCoinsQuery,
   useGetCoinsQuery,
   useGetCoinQuery,
   useLazyGetCoinLineChartQuery,
