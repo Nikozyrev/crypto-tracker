@@ -5,6 +5,7 @@ import { ICandleData, IMarketChartData, IMarketChartResponse, ResponseCandleData
 import { ICoin } from '../../interfaces/coin';
 import { ICoinDetailed } from '../../interfaces/coinDetailed';
 import { ICoinSearched } from '../../interfaces/coinSearched';
+import { IGlobalData } from '../../interfaces/globalData';
 
 interface ICoinMarketChartProps {
   id: string;
@@ -22,6 +23,12 @@ export const coingeckoApi = createApi({
       query: () => ({
         url: '/simple/supported_vs_currencies',
       })
+    }),
+    getGlobalData: build.query<IGlobalData, void>({
+      query: () => ({
+        url: '/global',
+      }),
+      transformResponse: (res: {data: IGlobalData}) => res.data 
     }),
     searchCoins: build.query<ICoinSearched[], string>({
       query: (query: string) => ({
@@ -77,6 +84,7 @@ export const coingeckoApi = createApi({
 
 export const {
   useGetSupportedVsCurrenciesQuery,
+  useGetGlobalDataQuery,
   useSearchCoinsQuery,
   useGetCoinsQuery,
   useGetCoinQuery,

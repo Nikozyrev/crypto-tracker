@@ -62,11 +62,11 @@ interface CoinImageOptions {
   large: string;
 }
 
-type MarketDataNumber = {
+export type MarketDataNumber = {
   [s in CURRENCIES]: number;
 }
 
-type MarketDataDate = {
+export type MarketDataDate = {
   [s in CURRENCIES]: Date;
 }
 

@@ -1,0 +1,1 @@
+export { HeaderGlobalData } from './HeaderGlobalData';
