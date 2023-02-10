@@ -8,7 +8,7 @@ interface CurrencyState {
 }
 
 const initialState: CurrencyState = {
-  currency: localStorage.getItem(LS_CURRENCY_KEY) as CURRENCIES ?? CURRENCIES.USD
+  currency: localStorage.getItem(LS_CURRENCY_KEY) as CURRENCIES ?? CURRENCIES.EUR
 }
 
 export const currencySlice = createSlice({

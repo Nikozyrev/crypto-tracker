@@ -29,6 +29,13 @@ export interface ICoin {
   atl: number;
   atl_change_percentage: number;
   atl_date: Date;
-  roi?: IRoi | null;
+  // roi?: IRoi | null;
   last_updated: Date;
+	price_change_percentage_1h_in_currency: number;
+	price_change_percentage_7d_in_currency: number;
+	price_change_percentage_24h_in_currency: number;
+
+
+
+
 }

@@ -7,6 +7,11 @@ import { ICoinDetailed } from '../../interfaces/coinDetailed';
 import { ICoinSearched } from '../../interfaces/coinSearched';
 import { IGlobalData } from '../../interfaces/globalData';
 
+interface IGetCoinsProps{
+	currency: CURRENCIES,
+	page: number
+}
+
 interface ICoinMarketChartProps {
   id: string;
   vs_currency: CURRENCIES;
@@ -38,12 +43,14 @@ export const coingeckoApi = createApi({
         },
       }),
       transformResponse: (res: {coins: ICoinSearched[]}) => res.coins || [] 
-    }),    
-    getCoins: build.query<ICoin[], string>({
-      query: (currency: CURRENCIES) => ({
+    }),
+    getCoins: build.query<ICoin[], IGetCoinsProps >({
+      query: ({currency, page}: IGetCoinsProps) => ({
         url: '/coins/markets',
         params: {
-          vs_currency: currency
+          vs_currency: currency,
+					price_change_percentage: '1h,24h,7d',
+					page
         },
       })
     }),

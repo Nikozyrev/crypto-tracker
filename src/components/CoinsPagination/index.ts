@@ -1,0 +1,1 @@
+export {CoinsPagination} from './CoinsPagination'

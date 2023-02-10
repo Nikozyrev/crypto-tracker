@@ -1,3 +1,4 @@
+
 import { useParams } from "react-router";
 import { CoinMainStats } from "../../components/CoinMainStats";
 import { CoinChart } from "../../components/charts/CoinChart";
