@@ -41,7 +41,7 @@ export const CoinsTableRow = ({ coin }: CoinsTableRowProps) => {
                ),
             }}
          >
-            {Number(coin.price_change_percentage_24h_in_currency.toFixed(1))}
+            {Number(coin.price_change_percentage_24h_in_currency).toFixed(1)}
          </td>
          <td
             className="coins__time7d"
@@ -49,7 +49,7 @@ export const CoinsTableRow = ({ coin }: CoinsTableRowProps) => {
                color: colorChanger(coin.price_change_percentage_7d_in_currency),
             }}
          >
-            {Number(coin.price_change_percentage_7d_in_currency.toFixed(1))}
+            {Number(coin.price_change_percentage_7d_in_currency).toFixed(1)}
          </td>
          <td className="coins__volume">
             {priceFormatter(currency)(coin.total_volume)}
