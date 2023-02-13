@@ -8,9 +8,10 @@ import './CoinsTable.scss';
 
 interface CoinsTableProps {
    data: ICoin[];
+	 setView: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const CoinsTable = ({ data }: CoinsTableProps) => {
+export const CoinsTable = ({ data, setView }: CoinsTableProps) => {
    const [order, setOrder] = useState<ORDER>(ORDER.NONE);
    const [sorted, setSorted] = useState<ICoin[]>(data);
    const [column, setColumn] = useState('');
@@ -33,7 +34,7 @@ export const CoinsTable = ({ data }: CoinsTableProps) => {
    return (
       <table className="coins__table" onClick={sortElements}>
          <CoinsTableHead order={order} column={column} />
-         <CoinsTableBody data={sorted} />
+         <CoinsTableBody setView = {setView} data={sorted} />
       </table>
    );
 };

@@ -9,7 +9,9 @@ import { IGlobalData } from '../../interfaces/globalData';
 
 interface IGetCoinsProps{
 	currency: CURRENCIES,
-	page: number
+	page: number,
+	ids: string
+
 }
 
 interface ICoinMarketChartProps {
@@ -45,12 +47,13 @@ export const coingeckoApi = createApi({
       transformResponse: (res: {coins: ICoinSearched[]}) => res.coins || [] 
     }),
     getCoins: build.query<ICoin[], IGetCoinsProps >({
-      query: ({currency, page}: IGetCoinsProps) => ({
+      query: ({currency, page, ids}: IGetCoinsProps) => ({
         url: '/coins/markets',
         params: {
           vs_currency: currency,
 					price_change_percentage: '1h,24h,7d',
-					page
+					page,
+					ids
         },
       })
     }),

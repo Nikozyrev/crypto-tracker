@@ -4,16 +4,15 @@ import './CoinsTableBody.scss';
 
 interface CoinsTableProps {
    data: ICoin[];
+	 setView: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const CoinsTableBody = ({ data }: CoinsTableProps) => {
+export const CoinsTableBody = ({ data, setView }: CoinsTableProps) => {
    return (
       <tbody>
          {data.map((coin) => (
-            <CoinsTableRow key={coin.id} coin={coin} />
+            <CoinsTableRow setView = {setView} key={coin.id} coin={coin} />
          ))}
       </tbody>
    );
 };
-
-// При нажатии на кнопку, вызывается функция сортировки. функции онклик будет аргумент связывающий кнопку и параметр сортировки
