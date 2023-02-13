@@ -1,0 +1,41 @@
+.converter_container {
+  background-color: rgba(243,244,246,1);
+  padding: 3%;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.converter_form {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  flex: 1 1 100%;
+  gap: 2%;
+  margin-bottom: 1%;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    margin-bottom: 2%;
+  }
+}
+
+.converter_form > div {
+  flex-basis: 25%;
+}
+
+.converter_result {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  
+
+  div:first-child {
+    font-size: 150%;
+    font-weight: 700;
+  }
+}
