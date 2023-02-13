@@ -1,4 +1,5 @@
 import { Converter } from "../../components/Converter";
+import './ConverterPage.scss';
 
 export const ConverterPage = () => {
   return (
