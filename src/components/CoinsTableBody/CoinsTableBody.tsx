@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants/routes';
 import { ICoin } from '../../interfaces/coin';
 import { CoinsTableRow } from '../CoinsTableRow';
 import './CoinsTableBody.scss';
@@ -11,7 +13,7 @@ export const CoinsTableBody = ({ data, setView }: CoinsTableProps) => {
    return (
       <tbody>
          {data.map((coin) => (
-            <CoinsTableRow setView = {setView} key={coin.id} coin={coin} />
+           <CoinsTableRow setView = {setView} key={coin.id} coin={coin}/>
          ))}
       </tbody>
    );

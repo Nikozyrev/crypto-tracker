@@ -6,44 +6,50 @@ import './CoinsTableRow.scss';
 import { colorChanger } from '../../helpers/colorChanger';
 import Checkbox from '@mui/material/Checkbox';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
-
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants/routes';
 
 interface CoinsTableRowProps {
    coin: ICoin;
-	 setView: React.Dispatch<React.SetStateAction<boolean>>
+   setView: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-
-export const CoinsTableRow = ({ coin , setView}: CoinsTableRowProps) => {
-	const { favorites } = useAppSelector(state => state.favorites);
-	const { addFavorites, deleteFavorites } = useAppActions();
+export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
+   const { favorites } = useAppSelector((state) => state.favorites);
+   const { addFavorites, deleteFavorites } = useAppActions();
    const { currency } = useAppSelector((state) => state.currency);
 
-
-
-	const onChangeHandler = (e: React.ChangeEvent) => {
-		const target = e.target as HTMLInputElement
-		if(target.checked) {
-			addFavorites(coin.id)
-		}
-		if(!target.checked) {
-			deleteFavorites(coin.id)
-		}
-		if(favorites.length === 1) {
-			setView(false)
-		}
-	
-	}
+   const onChangeHandler = (e: React.ChangeEvent) => {
+      const target = e.target as HTMLInputElement;
+      if (target.checked) {
+         addFavorites(coin.id);
+      }
+      if (!target.checked) {
+         deleteFavorites(coin.id);
+      }
+      if (favorites.length === 1) {
+         setView(false);
+      }
+   };
 
    return (
       <tr>
          <td className="coins__favorites">
-				 <Checkbox onChange={onChangeHandler} checked = {favorites.includes(coin.id) ? true : false} size='small' color='secondary' icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+            <Checkbox
+               onChange={onChangeHandler}
+               checked={favorites.includes(coin.id) ? true : false}
+               size="small"
+               color="secondary"
+               icon={<FavoriteBorder />}
+               checkedIcon={<Favorite />}
+            />
          </td>
          <td className="coins__num">{coin.market_cap_rank}</td>
-         <td className="coins__name-img">
+         <td>
+				 <Link className="coins__name-img" to={`${ROUTES.COINS}/${coin.id}`}>
             <img src={coin.image} alt="coin" className="coins__image" />
             <span className="coins__name">{coin.name}</span>
+						</Link>
          </td>
          <td className="coins__price">
             {priceFormatter(currency)(coin.current_price)}
