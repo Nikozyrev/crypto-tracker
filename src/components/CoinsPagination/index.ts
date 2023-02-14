@@ -1,1 +1,0 @@
-export {CoinsPagination} from './CoinsPagination'

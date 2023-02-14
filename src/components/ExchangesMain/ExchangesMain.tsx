@@ -1,19 +1,20 @@
-import { useGetExchangesQuery } from '../../store/coingecko/coingecko.api';
-import { ExchangesPagination } from '../ExchangesPagination';
+import { useState } from 'react';
+import { useGetExchangesQuery, useGetGlobalDataQuery } from '../../store/coingecko/coingecko.api';
+import { TablePagination } from '../TablePagination';
 import { ExchangesTable } from '../ExchangesTable';
 import './ExchangesMain.scss'
 
 
 export const ExchangesMain = () => {
+	const [page, setPage] = useState(1);
+	const { data } = useGetExchangesQuery(page);	
+	const { data: globalData } = useGetGlobalDataQuery();
+	const count = Math.ceil((globalData?.markets || 0) / 100) - 1; 
 
-	const { data } = useGetExchangesQuery();
-   console.log(data);
-
-	 
 	return (
 		<div>
 			{data && <ExchangesTable data = {data}/>}
-			<ExchangesPagination/>
+			<TablePagination count = {count} page={page} setPage={setPage}/>
 		</div>
 	);
 };

@@ -86,9 +86,12 @@ export const coingeckoApi = createApi({
             total_volumes: marketDataLineAdapter(res.total_volumes),
          }),
       }),
-      getExchanges: build.query<IExchange[], void>({
-         query: () => ({
+      getExchanges: build.query<IExchange[], number>({
+         query: (page: number) => ({
             url: '/exchanges',
+						params: {
+							page
+					 },
          }),
       }),
 
