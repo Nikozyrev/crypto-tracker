@@ -30,6 +30,36 @@ export const CoinMainStats: FC<ICoinMainStatsProps> = ({ coin }) => {
         <span>{`${coin.market_data.price_change_percentage_24h_in_currency[CURRENCIES.BTC].toFixed(1)}%`}</span>
       </div>
       <CoinDailyPriceRange coin={coin}/>
+      <div className="coin-global-stats">
+        <ul className="coin-market-stats">
+          <li className="coin-global-stats_item">
+            <span>Market Cap</span>
+            <span>{priceFormatter(currency)(coin.market_data.market_cap[currency])}</span>
+          </li>
+          <li className="coin-global-stats_item">
+            <span>24 Hour Trading Vol</span>
+            <span>{priceFormatter(currency)(coin.market_data.total_volume[currency])}</span>
+          </li>
+          <li className="coin-global-stats_item">
+            <span>Fully Diluted Valuation</span>
+            <span>{priceFormatter(currency)(coin.market_data.fully_diluted_valuation[currency])}</span>
+          </li>
+        </ul>
+        <ul className="coin-tokenomics-stats">
+          <li className="coin-global-stats_item">
+            <span>Circulating Supply</span>
+            <span>{coin.market_data.circulating_supply}</span>
+          </li>
+          <li className="coin-global-stats_item">
+            <span>Total Supply</span>
+            <span>{coin.market_data.total_supply}</span>
+          </li>
+          <li className="coin-global-stats_item">
+            <span>Max Supply</span>
+            <span>{coin.market_data.max_supply}</span>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
