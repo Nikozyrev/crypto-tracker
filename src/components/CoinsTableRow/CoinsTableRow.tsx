@@ -2,8 +2,9 @@ import { priceFormatter } from '../../helpers/price';
 import { useAppSelector } from '../../hooks/redux';
 import { ICoin } from '../../interfaces/coin';
 import starImg from '../../assets/img/tablestar.svg';
-import './CoinsTableRow.scss';
 import { colorChanger } from '../../helpers/colorChanger';
+import { Sparkline } from '../charts/Sparkline/Sparkline';
+import './CoinsTableRow.scss';
 
 interface CoinsTableRowProps {
    coin: ICoin;
@@ -57,7 +58,9 @@ export const CoinsTableRow = ({ coin }: CoinsTableRowProps) => {
          <td className="coins__market-cap">
             {priceFormatter(currency)(coin.market_cap)}
          </td>
-         <td className="coins__graph">GRAPG</td>
+         <td className="coins__graph">
+            <Sparkline data={coin.sparkline_in_7d.price}/>
+         </td>
       </tr>
    );
 };

@@ -1,5 +1,5 @@
 import { ColorType, createChart, UTCTimestamp } from "lightweight-charts";
-import { GRAY_CHART, GREEN_CHART, RED_CHART } from "../constants/chart";
+import { COLORS, GRAY_CHART, GREEN_CHART, RED_CHART } from "../constants/chart";
 import { useAppSelector } from "../hooks/redux";
 import { ILineData, ResponseCandleData, ResponseLineData } from "../interfaces/chart";
 import { priceFormatter } from "./price";
@@ -67,5 +67,20 @@ export const pickLineChartColors = (data: ILineData[]) => {
       return GRAY_CHART;
     default:
       return {};
+  }
+}
+
+export const pickSparkLineColors = (data: number[]) => {
+  const openPrice = data[0];
+  const closePrice = data[data.length - 1];
+  switch (true) {
+    case openPrice < closePrice:
+      return COLORS.GREEN;
+    case openPrice > closePrice:
+      return COLORS.RED;
+    case openPrice === closePrice:
+      return COLORS.GRAY;
+    default:
+      return;
   }
 }

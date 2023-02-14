@@ -67,8 +67,9 @@ export const coingeckoApi = createApi({
         url: '/coins/markets',
         params: {
           vs_currency: currency,
+					page,
 					price_change_percentage: '1h,24h,7d',
-					page
+          sparkline: true
         },
       })
     }),
