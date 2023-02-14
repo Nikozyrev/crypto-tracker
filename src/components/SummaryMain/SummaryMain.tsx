@@ -1,7 +1,19 @@
+import React, { ChangeEvent } from 'react';
 import { priceFormatter } from '../../helpers/price';
 import { useAppSelector } from '../../hooks/redux';
 import { useGetGlobalDataQuery } from '../../store/coingecko/coingecko.api';
 import './SummaryMain.scss';
+
+const toggleSummary = (e: ChangeEvent<HTMLInputElement>) => {
+  const summaryBody = document.querySelector(
+    '.summary__global-data__body'
+  ) as HTMLDivElement;
+  if (e.target.checked) {
+    summaryBody.style.display = 'flex';
+  } else {
+    summaryBody.style.display = 'none';
+  }
+};
 
 export const SummaryMain = () => {
   const { currency } = useAppSelector(state => state.currency);
@@ -13,18 +25,17 @@ export const SummaryMain = () => {
         <>
           <div className="summary__global-data">
             <h1>Cryptocurrency Prices by Market Cap</h1>
-            <button>On/off</button>
+            <label className="switch">
+              <input type="checkbox" onChange={toggleSummary} />
+              <span className="slider round"></span>
+            </label>
+
             <span>Show Stats</span>
           </div>
           <div>
             <p>
               The global cryptocurrency market cap today is
-              <span>
-                {priceFormatter('usd')(data?.total_market_cap['usd']).slice(
-                  0,
-                  5
-                )}
-              </span>
+              {priceFormatter('usd')(data?.total_market_cap['usd']).slice(0, 5)}
               Trillion, a 0.2% change in the last 24 hours.
             </p>
           </div>
