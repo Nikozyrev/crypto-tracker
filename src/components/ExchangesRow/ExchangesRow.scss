@@ -1,0 +1,40 @@
+
+.exchanges__img-name{
+	display: flex;
+	gap: 20px;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.exchanges__img {
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+}
+
+.exchanges__name {
+	text-align: left;
+}
+
+.exchanges__trust{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.trust__progres-line {
+	width: 100px;
+	height: 10px;
+	background-color: gray;
+	border-radius: 5px;
+}
+
+.trust__inner-progress-line {
+	width: 50%;
+	height: 100%;
+	background-color: green;
+	border-radius: 5px;
+}
+
+
