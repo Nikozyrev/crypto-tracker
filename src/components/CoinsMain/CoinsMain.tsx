@@ -45,8 +45,8 @@ export const CoinsMain = () => {
             {view ? 'Show all coins' : 'Show Favorites'}
          </Button>
          {data && <CoinsTable setView={setView} data={data} />}
-         (
-         <TablePagination count={count} page={page} setPage={setPage} />)
+         
+         <TablePagination count={count} page={page} setPage={setPage} />
       </div>
    );
 };

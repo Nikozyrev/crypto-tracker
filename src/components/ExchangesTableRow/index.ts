@@ -1,0 +1,1 @@
+export { ExchangesTableRow } from './ExchangesTableRow';

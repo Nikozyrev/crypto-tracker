@@ -1,9 +1,11 @@
 import { ORDER } from '../constants/order';
 import { ICoin } from '../interfaces/coin';
+import { IExchange } from '../interfaces/exchanges';
 
 export type coinKeys = keyof ICoin;
+export type exchangesKeys = keyof IExchange;
 
-export const sort = (array: ICoin[], field: coinKeys, order: ORDER) => {
+export const sort = <T extends Object> (array: T[], field: keyof T, order: ORDER) => {
    return [...array].sort((a, b) => {
       const first = a[field];
       const second = b[field];

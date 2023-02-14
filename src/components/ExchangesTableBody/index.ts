@@ -1,0 +1,1 @@
+export { ExchangesTableBody } from './ExchangesTableBody';

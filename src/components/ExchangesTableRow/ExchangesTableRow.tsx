@@ -1,11 +1,11 @@
 import { IExchange } from '../../interfaces/exchanges';
-import './ExchangesRow.scss';
+import './ExchangesTableRow.scss';
 
 interface IExchangesRow {
    data: IExchange;
 }
 
-export const ExchangesRow = ({ data }: IExchangesRow) => {
+export const ExchangesTableRow = ({ data }: IExchangesRow) => {
    return (
       <tr>
          <td className="exchanges__number">{data.trust_score_rank}</td>

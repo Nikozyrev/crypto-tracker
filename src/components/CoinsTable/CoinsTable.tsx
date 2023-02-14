@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { ORDER } from '../../constants/order';
+import { coinsHeader } from '../../constants/tableHeaders';
 import { sort } from '../../helpers/sort';
 import { ICoin } from '../../interfaces/coin';
 import { CoinsTableBody } from '../CoinsTableBody';
-import { CoinsTableHead } from '../CoinsTableHead';
+import { TableHead } from '../TableHead';
 import './CoinsTable.scss';
 
 interface CoinsTableProps {
    data: ICoin[];
-	 setView: React.Dispatch<React.SetStateAction<boolean>>
+   setView: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CoinsTable = ({ data, setView }: CoinsTableProps) => {
@@ -20,7 +21,7 @@ export const CoinsTable = ({ data, setView }: CoinsTableProps) => {
       setSorted(data);
    }, [data]);
 
-   function sortElements(e: React.MouseEvent) {
+   function sortHandler(e: React.MouseEvent) {
       const target = e.target as HTMLElement;
       if (target.className.includes('thead_s')) {
          const newOrder = order === ORDER.ASC ? ORDER.DESC : ORDER.ASC;
@@ -32,9 +33,9 @@ export const CoinsTable = ({ data, setView }: CoinsTableProps) => {
    }
 
    return (
-      <table className="coins__table" onClick={sortElements}>
-         <CoinsTableHead order={order} column={column} />
-         <CoinsTableBody setView = {setView} data={sorted} />
+      <table className="coins__table" onClick={sortHandler}>
+         <TableHead header={coinsHeader} order={order} column={column} />
+         <CoinsTableBody setView={setView} data={sorted} />
       </table>
    );
 };

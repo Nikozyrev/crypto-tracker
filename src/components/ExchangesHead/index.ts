@@ -1,1 +1,0 @@
-export { ExchangesHead } from './ExchangesHead';
