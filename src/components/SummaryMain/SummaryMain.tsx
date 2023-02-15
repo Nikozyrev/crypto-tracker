@@ -1,23 +1,13 @@
-import React, { ChangeEvent } from 'react';
+import React, { useState } from 'react';
 import { priceFormatter } from '../../helpers/price';
 import { useAppSelector } from '../../hooks/redux';
 import { useGetGlobalDataQuery } from '../../store/coingecko/coingecko.api';
 import './SummaryMain.scss';
 
-const toggleSummary = (e: ChangeEvent<HTMLInputElement>) => {
-  const summaryBody = document.querySelector(
-    '.summary__global-data__body'
-  ) as HTMLDivElement;
-  if (e.target.checked) {
-    summaryBody.style.display = 'flex';
-  } else {
-    summaryBody.style.display = 'none';
-  }
-};
-
 export const SummaryMain = () => {
   const { currency } = useAppSelector(state => state.currency);
   const { data } = useGetGlobalDataQuery();
+  const [areStatsOpen, setAreStatsOpen] = useState(true);
 
   return (
     <div className="main__summary-data">
@@ -26,20 +16,26 @@ export const SummaryMain = () => {
           <div className="summary__global-data">
             <h1>Cryptocurrency Prices by Market Cap</h1>
             <label className="switch">
-              <input type="checkbox" onChange={toggleSummary} />
+              <input
+                type="checkbox"
+                checked={areStatsOpen}
+                onChange={() => setAreStatsOpen(!areStatsOpen)}
+              />
               <span className="slider round"></span>
             </label>
-
             <span>Show Stats</span>
           </div>
           <div>
             <p>
-              The global cryptocurrency market cap today is
-              {priceFormatter('usd')(data?.total_market_cap['usd']).slice(0, 5)}
+              The global cryptocurrency market cap today is{' '}
+              {priceFormatter('usd')(data?.total_market_cap['usd']).slice(0, 5)}{' '}
               Trillion, a 0.2% change in the last 24 hours.
             </p>
           </div>
-          <div className="summary__global-data__body">
+          <div
+            className="summary__global-data__body"
+            style={{ display: areStatsOpen ? 'flex' : 'none' }}
+          >
             <div>
               <p className="global-data-view__title">
                 {priceFormatter(currency)(data?.total_market_cap[currency])}
