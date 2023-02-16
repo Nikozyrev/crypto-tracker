@@ -1,4 +1,5 @@
 import { FC } from "react";
+import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import { CURRENCIES } from "../../constants/currencies";
 import { priceFormatter } from "../../helpers/price";
 import { useAppSelector } from "../../hooks/redux";
@@ -56,7 +57,10 @@ export const CoinMainStats: FC<ICoinMainStatsProps> = ({ coin }) => {
           </li>
           <li className="coin-global-stats_item">
             <span>Max Supply</span>
-            <span>{coin.market_data.max_supply}</span>
+            {coin.market_data.max_supply 
+              ? <span>{coin.market_data.max_supply}</span>
+              : <AllInclusiveIcon fontSize='inherit'/>
+            }
           </li>
         </ul>
       </div>
