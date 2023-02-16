@@ -32,29 +32,28 @@ export const SummaryMain = () => {
               Trillion, a 0.2% change in the last 24 hours.
             </p>
           </div>
-          <div
-            className="summary__global-data__body"
-            style={{ display: areStatsOpen ? 'flex' : 'none' }}
-          >
-            <div>
-              <p className="global-data-view__title">
-                {priceFormatter(currency)(data?.total_market_cap[currency])}
-              </p>
-              <div>Market Capitalization</div>
+          {areStatsOpen && (
+            <div className="summary__global-data__body">
+              <div>
+                <p className="global-data-view__title">
+                  {priceFormatter(currency)(data?.total_market_cap[currency])}
+                </p>
+                <div>Market Capitalization</div>
+              </div>
+              <div>
+                <p>{priceFormatter(currency)(data?.total_volume[currency])}</p>
+                <div>24h Trading Volume</div>
+              </div>
+              <div>
+                <p>{`${data?.market_cap_percentage.btc.toFixed(2)}%`}</p>
+                <div>Bitcoin Market Cap Dominance</div>
+              </div>
+              <div>
+                <p>{data?.active_cryptocurrencies}</p>
+                <div># of Coins</div>
+              </div>
             </div>
-            <div>
-              <p>{priceFormatter(currency)(data?.total_volume[currency])}</p>
-              <div>24h Trading Volume</div>
-            </div>
-            <div>
-              <p>{`${data?.market_cap_percentage.btc.toFixed(2)}%`}</p>
-              <div>Bitcoin Market Cap Dominance</div>
-            </div>
-            <div>
-              <p>{data?.active_cryptocurrencies}</p>
-              <div># of Coins</div>
-            </div>
-          </div>
+          )}
         </>
       )}
     </div>

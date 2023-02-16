@@ -17,6 +17,7 @@ $green-color: #7eb63f;
     margin-right: 0.5rem;
   }
   &__body {
+    display: flex;
     justify-content: space-between;
     > div {
       width: 300px;
