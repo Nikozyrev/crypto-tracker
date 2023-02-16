@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import { CoinMainStats } from "../../components/CoinMainStats";
 import { CoinChart } from "../../components/charts/CoinChart";
 import { useGetCoinQuery } from "../../store/coingecko/coingecko.api";
+import { CoinInfo } from "../../components/CoinInfo";
+import './CoinsPage.scss';
 
 export const CoinsPage = () => {
   const { id } = useParams();
@@ -15,7 +17,10 @@ export const CoinsPage = () => {
       {isError && <div>Coin not found</div>}
       {(data && id) && (
         <>
-          <CoinMainStats coin={data}/>
+          <div className="coin-main-info">
+            <CoinMainStats coin={data}/>
+            <CoinInfo coin={data}/>
+          </div>
           <CoinChart id={id}/>
         </>
       )}

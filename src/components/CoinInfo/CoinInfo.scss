@@ -1,0 +1,11 @@
+.coin-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.coin-info__links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
