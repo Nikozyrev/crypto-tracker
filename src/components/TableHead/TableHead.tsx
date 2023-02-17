@@ -5,11 +5,10 @@ import './TableHead.scss';
 interface ITableHeadProps {
    column: string;
    order: ORDER;
-	 header: IHeader[];
+   header: IHeader[];
 }
 
-export const TableHead = ({header, column, order }: ITableHeadProps) => {
-  
+export const TableHead = ({ header, column, order }: ITableHeadProps) => {
    return (
       <thead>
          <tr className="coins__head">

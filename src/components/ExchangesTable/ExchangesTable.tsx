@@ -4,8 +4,8 @@ import { exchangesHeader } from '../../constants/tableHeaders';
 import { sort } from '../../helpers/sort';
 import { IExchange } from '../../interfaces/exchanges';
 import { TableHead } from '../TableHead';
-import { ExchangesTableBody } from '../ExchangesTableBody/ExchangesTableBody';
 import './ExchangesTable.scss';
+import { ExchangesTableRow } from '../ExchangesTableRow';
 
 export interface ExchangesProps {
    data: IExchange[];
@@ -33,12 +33,12 @@ export const ExchangesTable = ({ data }: ExchangesProps) => {
 
    return (
       <table onClick={sortHandler}>
-         <TableHead
-            header={exchangesHeader}
-            order={order}
-            column={column}
-         />
-         <ExchangesTableBody data={sorted} />
+         <TableHead header={exchangesHeader} order={order} column={column} />
+         <tbody>
+            {sorted.map((el) => (
+               <ExchangesTableRow key={el.id} coin={el} />
+            ))}
+         </tbody>
       </table>
    );
 };

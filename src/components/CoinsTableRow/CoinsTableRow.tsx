@@ -1,7 +1,6 @@
 import { priceFormatter } from '../../helpers/price';
 import { useAppActions, useAppSelector } from '../../hooks/redux';
 import { ICoin } from '../../interfaces/coin';
-import starImg from '../../assets/img/tablestar.svg';
 import './CoinsTableRow.scss';
 import { colorChanger } from '../../helpers/colorChanger';
 import Checkbox from '@mui/material/Checkbox';
@@ -46,10 +45,10 @@ export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
          </td>
          <td className="coins__num">{coin.market_cap_rank}</td>
          <td>
-				 <Link className="coins__name-img" to={`${ROUTES.COINS}/${coin.id}`}>
-            <img src={coin.image} alt="coin" className="coins__image" />
-            <span className="coins__name">{coin.name}</span>
-						</Link>
+            <Link className="coins__name-img" to={`${ROUTES.COINS}/${coin.id}`}>
+               <img src={coin.image} alt="coin" className="coins__image" />
+               <span className="coins__name">{coin.name}</span>
+            </Link>
          </td>
          <td className="coins__price">
             {priceFormatter(currency)(coin.current_price)}

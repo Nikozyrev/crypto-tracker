@@ -1,6 +1,5 @@
 import { Container, Pagination, Stack } from '@mui/material';
 
-
 const styles = {
    marginY: 3,
    marginX: 'auto',

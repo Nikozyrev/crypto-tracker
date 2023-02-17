@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { useAppSelector } from '../../hooks/redux';
 import {
@@ -14,7 +14,7 @@ export const CoinsMain = () => {
    const { currency } = useAppSelector((state) => state.currency);
    const [page, setPage] = useState(1);
    const [view, setView] = useState(false);
-   const { data } = useGetCoinsQuery({
+   const { data, isFetching, isError } = useGetCoinsQuery({
       currency,
       page,
       ids: view ? favorites.join(',') : '',
@@ -34,19 +34,37 @@ export const CoinsMain = () => {
       }
    };
 
+   const styles = {
+      marginY: 20,
+      marginX: 'auto',
+   };
+
    return (
       <div>
-         <Button
-            onClick={onClickHandler}
-            size="medium"
-            sx={{ marginBottom: '20px', marginTop: '20px' }}
-            variant="contained"
-         >
-            {view ? 'Show all coins' : 'Show Favorites'}
-         </Button>
-         {data && <CoinsTable setView={setView} data={data} />}
-         
-         <TablePagination count={count} page={page} setPage={setPage} />
+         {!isError && !isFetching && (
+            <Button
+               onClick={onClickHandler}
+               size="medium"
+               sx={{ marginBottom: '20px', marginTop: '20px' }}
+               variant="contained"
+            >
+               {view ? 'Show all coins' : 'Show Favorites'}
+            </Button>
+         )}
+         {data && (
+            <CoinsTable isFetching={isFetching} setView={setView} data={data} />
+         )}
+         {!isFetching && (
+            <TablePagination count={count} page={page} setPage={setPage} />
+         )}
+         {isFetching && (
+            <div className="progress">
+               <CircularProgress color="primary" />
+            </div>
+         )}
+         {isError && (
+            <div className="error">Error. Something went wrong...</div>
+         )}
       </div>
    );
 };
