@@ -8,7 +8,7 @@ interface IExchangesRow {
 
 export const ExchangesTableRow = ({ coin }: IExchangesRow) => {
    return (
-      <tr>
+      <tr className='_row'>
          <td className="exchanges__number">{coin.trust_score_rank}</td>
          <td>
             <div className="exchanges__img-name">

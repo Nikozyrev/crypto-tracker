@@ -13,7 +13,6 @@ export const ExchangesMain = () => {
    const { data, isFetching, isError } = useGetExchangesQuery(page);
    const { data: globalData } = useGetGlobalDataQuery();
    const count = Math.ceil((globalData?.markets || 0) / 100) - 1;
-
    return (
       <div>
          {data && <ExchangesTable data={data} />}
