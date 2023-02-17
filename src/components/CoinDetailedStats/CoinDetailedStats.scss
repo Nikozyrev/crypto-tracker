@@ -1,0 +1,26 @@
+.coin-detailed-stats {
+  width: 380px;
+  padding: 1rem;
+  background: #f3f4f6;
+  color: #4a4a4a;
+  border-radius: 20px;
+  &__title {
+    padding: 0.7rem;
+    color: #111827;
+  }
+}
+table td,
+table th {
+  border: none;
+  border-top: 1px solid #dee2e6;
+}
+table {
+  th {
+    text-align: left;
+    color: #6b7280;
+  }
+  td {
+    text-align: right;
+    color: #111827;
+  }
+}
