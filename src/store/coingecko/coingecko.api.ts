@@ -22,6 +22,11 @@ interface IGetCoinsProps {
    ids: string;
 }
 
+interface IGetCoinPriceProps {
+   ids: string;
+   vs_currencies: string;
+}
+
 interface ICoinMarketChartProps {
    id: string;
    vs_currency: CURRENCIES;
@@ -55,6 +60,23 @@ export const coingeckoApi = createApi({
          transformResponse: (res: { coins: ICoinSearched[] }) =>
             res.coins || [],
       }),
+      getCoinPrice: build.query<
+         {
+            [id: string]: {
+               [s in CURRENCIES]: number;
+            } & { last_updated_at: number };
+         },
+         IGetCoinPriceProps
+      >({
+         query: ({ ids, vs_currencies }: IGetCoinPriceProps) => ({
+            url: '/simple/price',
+            params: {
+               ids,
+               vs_currencies,
+               include_last_updated_at: true,
+            },
+         }),
+      }),
       getCoins: build.query<ICoin[], IGetCoinsProps>({
          query: ({ currency, page, ids }: IGetCoinsProps) => ({
             url: '/coins/markets',
@@ -63,6 +85,7 @@ export const coingeckoApi = createApi({
                price_change_percentage: '1h,24h,7d',
                page,
                ids,
+               sparkline: true,
             },
          }),
       }),
@@ -89,9 +112,9 @@ export const coingeckoApi = createApi({
       getExchanges: build.query<IExchange[], number>({
          query: (page: number) => ({
             url: '/exchanges',
-						params: {
-							page
-					 },
+            params: {
+               page,
+            },
          }),
       }),
 
@@ -113,6 +136,7 @@ export const {
    useGetSupportedVsCurrenciesQuery,
    useGetGlobalDataQuery,
    useSearchCoinsQuery,
+   useGetCoinPriceQuery,
    useGetCoinsQuery,
    useGetCoinQuery,
    useLazyGetCoinLineChartQuery,

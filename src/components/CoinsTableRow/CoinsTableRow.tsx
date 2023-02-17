@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
+import { Favorite, FavoriteBorder } from '@mui/icons-material';
+import Checkbox from '@mui/material/Checkbox';
 import { priceFormatter } from '../../helpers/price';
 import { useAppActions, useAppSelector } from '../../hooks/redux';
 import { ICoin } from '../../interfaces/coin';
-import './CoinsTableRow.scss';
 import { colorChanger } from '../../helpers/colorChanger';
-import Checkbox from '@mui/material/Checkbox';
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
+import { Sparkline } from '../charts/Sparkline/Sparkline';
+import './CoinsTableRow.scss';
 
 interface CoinsTableRowProps {
    coin: ICoin;
@@ -85,7 +86,9 @@ export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
          <td className="coins__market-cap">
             {priceFormatter(currency)(coin.market_cap)}
          </td>
-         <td className="coins__graph">GRAPG</td>
+         <td className="coins__graph">
+            <Sparkline data={coin.sparkline_in_7d.price} />
+         </td>
       </tr>
    );
 };

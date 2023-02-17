@@ -1,0 +1,19 @@
+.coin-main-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+
+  .coin-main-stats {
+    flex: 1 1 60%;
+  }
+}
+
+.coin-price-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+
+  .chart {
+    flex: 1 1 60%;
+  }
+}

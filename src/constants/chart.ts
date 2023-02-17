@@ -19,20 +19,26 @@ export const CHART_PERIODS = [
 	{periodName: 'Max', periodValue: 'max'},
 ] as const;
 
+export enum COLORS {
+  GREEN = 'rgb(0, 164, 0)',
+  RED = 'rgb(236, 16, 16)',
+  GRAY = 'rgb(113, 113, 113)'
+}
+
 export const GREEN_CHART = {
-  lineColor: 'rgb(0, 164, 0)',
-  areaTopColor: 'rgb(0, 164, 0)',
+  lineColor: COLORS.GREEN,
+  areaTopColor: COLORS.GREEN,
   areaBottomColor: 'rgba(0, 164, 0, 0.3)'
 }
 
 export const RED_CHART = {
-  lineColor: 'rgb(236, 16, 16)',
-  areaTopColor: 'rgb(236, 16, 16)',
+  lineColor: COLORS.RED,
+  areaTopColor: COLORS.RED,
   areaBottomColor: 'rgba(236, 16, 16, 0.3)'
 }
 
 export const GRAY_CHART = {
-  lineColor: 'rgb(113, 113, 113)',
-  areaTopColor: 'rgb(113, 113, 113)',
+  lineColor: COLORS.GRAY,
+  areaTopColor: COLORS.GRAY,
   areaBottomColor: 'rgba(113, 113, 113, 0.3)'
 }
