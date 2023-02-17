@@ -5,6 +5,7 @@ import { CoinMainStats } from "../../components/CoinMainStats";
 import { CoinChart } from "../../components/charts/CoinChart";
 import { useGetCoinQuery } from "../../store/coingecko/coingecko.api";
 import { CoinInfo } from "../../components/CoinInfo";
+import { NotFoundMessage } from "../../components/NotFoundMessage";
 import './CoinsPage.scss';
 
 export const CoinsPage = () => {
@@ -14,7 +15,7 @@ export const CoinsPage = () => {
   return (
     <main className="main">
       {isFetching && <CircularProgress color="primary" />}
-      {isError && <div>Coin not found</div>}
+      {isError && <NotFoundMessage/>}
       {(data && id) && (
         <>
           <div className="coin-main-info">
