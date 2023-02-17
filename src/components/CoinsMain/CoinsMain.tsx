@@ -41,7 +41,7 @@ export const CoinsMain = () => {
 
    return (
       <div>
-         {!isError && !isFetching && (
+         { data &&(
             <Button
                onClick={onClickHandler}
                size="medium"
@@ -54,7 +54,7 @@ export const CoinsMain = () => {
          {data && (
             <CoinsTable isFetching={isFetching} setView={setView} data={data} />
          )}
-         {!isFetching && (
+         {data && (
             <TablePagination count={count} page={page} setPage={setPage} />
          )}
          {isFetching && (

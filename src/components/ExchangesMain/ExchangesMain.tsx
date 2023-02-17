@@ -17,7 +17,7 @@ export const ExchangesMain = () => {
    return (
       <div>
          {data && <ExchangesTable data={data} />}
-         {!isFetching && !isError && (
+         {data && (
             <TablePagination count={count} page={page} setPage={setPage} />
          )}
          {isFetching && (
