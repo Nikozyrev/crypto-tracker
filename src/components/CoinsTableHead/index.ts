@@ -1,1 +1,0 @@
-export {CoinsTableHead} from './CoinsTableHead'

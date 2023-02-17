@@ -3,11 +3,11 @@ thead th:nth-child(1) {
 }
 
 thead th:nth-child(2) {
-   width: 2%;
+   width: 5%;
 }
 
 thead th:nth-child(3) {
-   width: 28%;
+   width: 25%;
 }
 
 thead th:nth-child(4) {
@@ -42,16 +42,16 @@ th,
 td {
    padding: 10px;
    border-bottom: 1px solid #dee2e6;
-   min-height: 60px;
+   height: 70px;
    text-align: center;
 }
 
 .ASC:after {
    content: '▲';
-	 font-size:10px;
+   font-size: 10px;
 }
 
 .DESC:after {
    content: '▼';
-	 font-size:10px;
+   font-size: 10px;
 }
