@@ -1,4 +1,5 @@
 
+import { CircularProgress } from "@mui/material";
 import { useParams } from "react-router";
 import { CoinMainStats } from "../../components/CoinMainStats";
 import { CoinChart } from "../../components/charts/CoinChart";
@@ -9,11 +10,10 @@ import './CoinsPage.scss';
 export const CoinsPage = () => {
   const { id } = useParams();
   const { data, isFetching, isError } = useGetCoinQuery(id as string);
-  console.log(data);
 
   return (
     <main className="main">
-      {isFetching && <div>Loading...</div>}
+      {isFetching && <CircularProgress color="primary" />}
       {isError && <div>Coin not found</div>}
       {(data && id) && (
         <>
@@ -21,7 +21,9 @@ export const CoinsPage = () => {
             <CoinMainStats coin={data}/>
             <CoinInfo coin={data}/>
           </div>
-          <CoinChart id={id}/>
+          <div className="coin-price-info">
+            <CoinChart id={id}/>
+          </div>
         </>
       )}
     </main>
