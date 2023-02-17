@@ -1,3 +1,6 @@
+import { CircularProgress, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import TimelineIcon from '@mui/icons-material/Timeline';
+import CandlestickChartIcon from '@mui/icons-material/CandlestickChart';
 import { useState } from "react";
 import { CHART_DATA_MODES, CHART_MODES, CHART_PERIODS } from "../../../constants/chart";
 import { pickLineChartColors } from "../../../helpers/chart";
@@ -17,53 +20,67 @@ export const CoinChart = ({ id }: ICoinChartProps) => {
   const [dataPeriod, setDataPeriod] = useState<number | 'max'>(1);
   const {data, isError, isLoading} = useChartData(id, chartMode, dataMode, dataPeriod);
   
-  const changeDataPeriodHandler = (e: React.MouseEvent) => {
-    const target = e.target as HTMLButtonElement;
-    if (target.dataset.period) {
-      const newPeriod = target.dataset.period === 'max' ? target.dataset.period : Number(target.dataset.period);
-      setDataPeriod(newPeriod);
-    }
-  }
-  
+  const handleChartMode = (
+    event: React.MouseEvent<HTMLElement>, 
+    value: CHART_MODES
+  ) => {setChartMode(value)};
+
+  const handleDataMode = (
+    event: React.MouseEvent<HTMLElement>, 
+    value: CHART_DATA_MODES
+  ) => {setDataMode(value)};
+
+  const handleDataPeriod = (
+    event: React.MouseEvent<HTMLElement>, 
+    value: number | 'max'
+  ) => {setDataPeriod(value)};
+
   return (
     <div className='chart'>
       <div className='chart__control'>
-        <div className='chart__mode'>
-          <button 
-            className={`chart-control-btn ${chartMode === CHART_MODES.LINE ? '_active' : ''}`} 
-            onClick={() => setChartMode(CHART_MODES.LINE)}
-          >Line</button>
-          <button
-            className={`chart-control-btn ${chartMode === CHART_MODES.CANDLE ? '_active' : ''}`} 
-            onClick={() => setChartMode(CHART_MODES.CANDLE)}
-          >Candle</button>
+        <div className="chart__control_group">
+          <ToggleButtonGroup
+            value={dataMode}
+            exclusive
+            onChange={handleDataMode}
+            size='small'
+          >
+            <ToggleButton value={CHART_DATA_MODES.PRICE}>
+              Price
+            </ToggleButton>
+            <ToggleButton value={CHART_DATA_MODES.MARKET_CAP} disabled={chartMode === CHART_MODES.CANDLE}>
+              Market Cap
+            </ToggleButton>
+          </ToggleButtonGroup>
+          <ToggleButtonGroup
+            value={dataPeriod}
+            exclusive
+            onChange={handleDataPeriod}
+            size='small'
+          >
+            {CHART_PERIODS.map(el => 
+              <ToggleButton key={el.periodValue} value={el.periodValue}>{el.periodName}</ToggleButton>)}
+          </ToggleButtonGroup>
         </div>
-        <div className='chart__data'>
-          <button
-            className={`chart-control-btn ${dataMode === CHART_DATA_MODES.PRICE ? '_active' : ''}`}
-            onClick={() => setDataMode(CHART_DATA_MODES.PRICE)}
-          >Price</button>
-          <button
-            className={`chart-control-btn ${dataMode === CHART_DATA_MODES.MARKET_CAP ? '_active' : ''}`}
-            disabled={chartMode === CHART_MODES.CANDLE}
-            onClick={() => setDataMode(CHART_DATA_MODES.MARKET_CAP)}
-          >Market Cap</button>
-        </div>
-        <div onClick={changeDataPeriodHandler} className='chart__period'>
-          {CHART_PERIODS.map(el => 
-            <button 
-              className={`chart-control-btn ${dataPeriod === el.periodValue ? '_active' : ''}`}
-              key={el.periodValue} 
-              data-period={el.periodValue}
-            >{el.periodName}</button>)
-          }
-        </div>
+        <ToggleButtonGroup
+            value={chartMode}
+            exclusive
+            onChange={handleChartMode}
+            size='small'
+          >
+          <ToggleButton value={CHART_MODES.LINE}>
+            <TimelineIcon/>
+          </ToggleButton>
+          <ToggleButton value={CHART_MODES.CANDLE}>
+            <CandlestickChartIcon/>
+          </ToggleButton>
+        </ToggleButtonGroup>
       </div>
       {
         isError && <div>Network Error. Try again.</div>
       }
       {
-        isLoading && <div>Loading...</div>
+        isLoading && <CircularProgress color="primary" />
       }
       { 
         (data && chartMode === CHART_MODES.LINE) 
