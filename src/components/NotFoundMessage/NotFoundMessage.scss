@@ -1,0 +1,24 @@
+.not-found-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 0;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.not-found__text {
+  flex: 1 1 55%;
+
+  * {
+    margin-bottom: 5%;
+    font-size: 150%;
+  }
+}
+
+.not-found__image {
+  flex: 1 1 45%;
+}
