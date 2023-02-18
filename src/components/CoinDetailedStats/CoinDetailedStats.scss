@@ -5,21 +5,24 @@
   color: #4a4a4a;
   border-radius: 20px;
   &__title {
-    padding: 0.7rem;
+    padding: 0.5rem;
     color: #111827;
   }
 }
 table td,
 table th {
   border: none;
-  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
 }
 table {
+  margin: 0 auto;
   th {
+    height: 100%;
     text-align: left;
     color: #6b7280;
   }
   td {
+    height: 100%;
     text-align: right;
     color: #111827;
   }
