@@ -15,6 +15,7 @@ import { ICoinDetailed } from '../../interfaces/coinDetailed';
 import { ICoinSearched } from '../../interfaces/coinSearched';
 import { IGlobalData } from '../../interfaces/globalData';
 import { IExchange } from '../../interfaces/exchanges';
+import { COINS_PER_PAGE } from '../../constants/coins';
 
 interface IGetCoinsProps {
    currency: CURRENCIES;
@@ -86,6 +87,7 @@ export const coingeckoApi = createApi({
                page,
                ids,
                sparkline: true,
+               per_page: COINS_PER_PAGE,
             },
          }),
       }),
