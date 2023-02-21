@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { priceFormatter } from '../../helpers/price';
+import { CURRENCIES } from '../../constants/currencies';
+import { COMPACT_DISPLAY, NOTATION, numberFormatter, priceFormatter } from '../../helpers/price';
 import { useAppSelector } from '../../hooks/redux';
 import { useGetGlobalDataQuery } from '../../store/coingecko/coingecko.api';
 import './SummaryMain.scss';
@@ -28,20 +29,20 @@ export const SummaryMain = () => {
           <div>
             <p>
               The global cryptocurrency market cap today is{' '}
-              {priceFormatter('usd')(data?.total_market_cap['usd']).slice(0, 5)}{' '}
-              Trillion, a 0.2% change in the last 24 hours.
+              {priceFormatter(CURRENCIES.USD, {notation: NOTATION.COMPACT, compactDisplay: COMPACT_DISPLAY.LONG, max: 2})(data?.total_market_cap[CURRENCIES.USD])}{', '}
+              a {data.market_cap_change_percentage_24h_usd.toFixed(1)}% change in the last 24 hours.
             </p>
           </div>
           {areStatsOpen && (
             <div className="summary__global-data__body">
               <div>
                 <p className="global-data-view__title">
-                  {priceFormatter(currency)(data?.total_market_cap[currency])}
+                  {priceFormatter(currency, {max: 0})(data?.total_market_cap[currency])}
                 </p>
                 <div>Market Capitalization</div>
               </div>
               <div>
-                <p>{priceFormatter(currency)(data?.total_volume[currency])}</p>
+                <p>{priceFormatter(currency, {max: 0})(data?.total_volume[currency])}</p>
                 <div>24h Trading Volume</div>
               </div>
               <div>
@@ -49,7 +50,7 @@ export const SummaryMain = () => {
                 <div>Bitcoin Market Cap Dominance</div>
               </div>
               <div>
-                <p>{data?.active_cryptocurrencies}</p>
+                <p>{numberFormatter(data?.active_cryptocurrencies)}</p>
                 <div># of Coins</div>
               </div>
             </div>
