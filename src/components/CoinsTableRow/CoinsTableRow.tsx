@@ -35,7 +35,7 @@ export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
    };
 
    return (
-      <tr>
+      <tr className='_row'>
          <td className="coins__favorites">
             <Checkbox
                onChange={onChangeHandler}
@@ -51,6 +51,7 @@ export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
             <Link className="coins__name-img" to={`${ROUTES.COINS}/${coin.id}`}>
                <img src={coin.image} alt="coin" className="coins__image" />
                <span className="coins__name">{coin.name}</span>
+							 <span className='coins__symbol'>{coin.symbol.toUpperCase()}</span>
             </Link>
          </td>
          <td className="coins__price">
@@ -62,7 +63,7 @@ export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
                color: colorChanger(coin.price_change_percentage_1h_in_currency),
             }}
          >
-            {Number(coin.price_change_percentage_1h_in_currency).toFixed(1)}
+            {Number(coin.price_change_percentage_1h_in_currency).toFixed(1)}%
          </td>
          <td
             className="coins__time24h"
@@ -72,7 +73,7 @@ export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
                ),
             }}
          >
-            {Number(coin.price_change_percentage_24h_in_currency).toFixed(1)}
+            {Number(coin.price_change_percentage_24h_in_currency).toFixed(1)}%
          </td>
          <td
             className="coins__time7d"
@@ -80,7 +81,7 @@ export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
                color: colorChanger(coin.price_change_percentage_7d_in_currency),
             }}
          >
-            {Number(coin.price_change_percentage_7d_in_currency).toFixed(1)}
+            {Number(coin.price_change_percentage_7d_in_currency).toFixed(1)}%
          </td>
          <td className="coins__volume">
             {priceFormatter(currency)(coin.total_volume)}

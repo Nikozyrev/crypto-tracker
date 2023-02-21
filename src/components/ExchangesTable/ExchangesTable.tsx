@@ -32,7 +32,7 @@ export const ExchangesTable = ({ data }: ExchangesProps) => {
    }
 
    return (
-      <table onClick={sortHandler}>
+      <table className="table" onClick={sortHandler}>
          <TableHead header={exchangesHeader} order={order} column={column} />
          <tbody>
             {sorted.map((el) => (

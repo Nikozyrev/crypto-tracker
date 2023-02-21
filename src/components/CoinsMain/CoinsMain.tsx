@@ -30,21 +30,17 @@ export const CoinsMain = () => {
    const onClickHandler = () => {
       if (favorites.length > 0 && !view) {
          setView(true);
+         setPage(1);
       } else {
          setView(false);
       }
    };
-
-   const styles = {
-      marginY: 20,
-      marginX: 'auto',
-   };
-
    return (
       <div>
-         { data &&(
+         {data && (
             <Button
                onClick={onClickHandler}
+               disabled={!favorites.length}
                size="medium"
                sx={{ marginBottom: '20px', marginTop: '20px' }}
                variant="contained"

@@ -12,8 +12,8 @@ import { UpButton } from '../UpButton';
 export const App = () => {
    return (
       <div className="app">
+         <Header />
          <div className="_container">
-            <Header />
             <Routes>
                <Route path={ROUTES.MAIN} element={<MainPage />} />
                <Route path={`${ROUTES.COINS}/:id`} element={<CoinsPage />} />
@@ -22,8 +22,8 @@ export const App = () => {
                <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
             </Routes>
          </div>
-				 <Footer />
-             <UpButton/>
+         <Footer />
+         <UpButton/>
       </div>
    );
 };

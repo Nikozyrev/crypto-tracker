@@ -1,3 +1,6 @@
+
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants/routes';
 import { CURRENCIES } from '../../constants/currencies';
 import { priceFormatter } from '../../helpers/price';
 import { IExchange } from '../../interfaces/exchanges';
@@ -8,18 +11,27 @@ interface IExchangesRow {
 }
 
 export const ExchangesTableRow = ({ coin }: IExchangesRow) => {
+   console.log(coin.url);
    return (
-      <tr>
+      <tr className="_row">
          <td className="exchanges__number">{coin.trust_score_rank}</td>
          <td>
-            <div className="exchanges__img-name">
+            <a
+               className="exchanges__img-name"
+               href={
+                  coin.url === 'https://r.kraken.com/c/2223866/687155/10583'
+                     ? 'https://www.kraken.com/'
+                     : coin.url
+               }
+               target="_blank"
+            >
                <img
                   className="exchanges__img"
                   src={coin.image}
                   alt="exchange__image"
                />
                <span className="exchanges__name">{coin.name}</span>
-            </div>
+            </a>
          </td>
          <td className="exchanges__trust">
             <div className="trust__progres-line">

@@ -46,6 +46,11 @@ td {
    text-align: center;
 }
 
+th {
+	cursor: pointer;
+}
+
+
 .ASC:after {
    content: '▲';
    font-size: 10px;
