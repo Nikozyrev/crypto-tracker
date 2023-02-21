@@ -11,8 +11,12 @@
 .coin-price-info {
   display: flex;
   gap: 2%;
+  justify-content: space-between;
 
   .chart {
     flex: 1 1 60%;
   }
+}
+.coin-symbol {
+  text-transform: uppercase;
 }
