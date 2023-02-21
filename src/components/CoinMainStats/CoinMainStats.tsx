@@ -1,7 +1,7 @@
 import { FC } from "react";
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import { CURRENCIES } from "../../constants/currencies";
-import { priceFormatter } from "../../helpers/price";
+import { numberFormatter, priceFormatter } from "../../helpers/price";
 import { useAppSelector } from "../../hooks/redux";
 import { ICoinDetailed } from "../../interfaces/coinDetailed";
 import { CoinDailyPriceRange } from "../CoinDailyPriceRange";
@@ -43,22 +43,26 @@ export const CoinMainStats: FC<ICoinMainStatsProps> = ({ coin }) => {
           </li>
           <li className="coin-global-stats_item">
             <span>Fully Diluted Valuation</span>
-            <span>{priceFormatter(currency)(coin.market_data.fully_diluted_valuation[currency])}</span>
+            <span>{
+              coin.market_data.fully_diluted_valuation[currency] 
+                ? priceFormatter(currency)(coin.market_data.fully_diluted_valuation[currency])
+                : '-'
+              }</span>
           </li>
         </ul>
         <ul className="coin-tokenomics-stats">
           <li className="coin-global-stats_item">
             <span>Circulating Supply</span>
-            <span>{coin.market_data.circulating_supply}</span>
+            <span>{numberFormatter(coin.market_data.circulating_supply)}</span>
           </li>
           <li className="coin-global-stats_item">
             <span>Total Supply</span>
-            <span>{coin.market_data.total_supply}</span>
+            <span>{numberFormatter(coin.market_data.total_supply)}</span>
           </li>
           <li className="coin-global-stats_item">
             <span>Max Supply</span>
             {coin.market_data.max_supply 
-              ? <span>{coin.market_data.max_supply}</span>
+              ? <span>{numberFormatter(coin.market_data.max_supply)}</span>
               : <AllInclusiveIcon fontSize='inherit'/>
             }
           </li>
