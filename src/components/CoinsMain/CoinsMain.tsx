@@ -19,6 +19,10 @@ export const CoinsMain = () => {
       currency,
       page,
       ids: view ? favorites.join(',') : '',
+   }, {
+      pollingInterval: 30000,
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: 10
    });
    const { data: globalData } = useGetGlobalDataQuery();
    const coinsQnty = Math.ceil(
