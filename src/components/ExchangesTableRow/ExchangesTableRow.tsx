@@ -1,5 +1,7 @@
+
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
+import { CURRENCIES } from '../../constants/currencies';
 import { priceFormatter } from '../../helpers/price';
 import { IExchange } from '../../interfaces/exchanges';
 import './ExchangesTableRow.scss';
@@ -41,10 +43,10 @@ export const ExchangesTableRow = ({ coin }: IExchangesRow) => {
             {coin.trust_score}
          </td>
          <td className="exchanges__24h-normalized">
-            {priceFormatter('BTC')(coin.trade_volume_24h_btc_normalized)}
+            {priceFormatter(CURRENCIES.BTC, {max: 0})(coin.trade_volume_24h_btc_normalized)}
          </td>
          <td className="exchanges__24h">
-            {priceFormatter('BTC')(coin.trade_volume_24h_btc)}
+            {priceFormatter(CURRENCIES.BTC, {max: 0})(coin.trade_volume_24h_btc)}
          </td>
       </tr>
    );

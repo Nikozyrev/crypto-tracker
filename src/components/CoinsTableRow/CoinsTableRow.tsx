@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import Checkbox from '@mui/material/Checkbox';
@@ -18,6 +19,7 @@ export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
    const { favorites } = useAppSelector((state) => state.favorites);
    const { addFavorites, deleteFavorites } = useAppActions();
    const { currency } = useAppSelector((state) => state.currency);
+   const sparklineData = useMemo(() => coin.sparkline_in_7d.price, [coin]);   
 
    const onChangeHandler = (e: React.ChangeEvent) => {
       const target = e.target as HTMLInputElement;
@@ -88,7 +90,7 @@ export const CoinsTableRow = ({ coin, setView }: CoinsTableRowProps) => {
             {priceFormatter(currency)(coin.market_cap)}
          </td>
          <td className="coins__graph">
-            <Sparkline data={coin.sparkline_in_7d.price} />
+            <Sparkline data={sparklineData} />
          </td>
       </tr>
    );

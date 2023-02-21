@@ -7,6 +7,7 @@ import { ConverterPage } from '../../pages/ConverterPage';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
+import { UpButton } from '../UpButton';
 
 export const App = () => {
    return (
@@ -22,6 +23,7 @@ export const App = () => {
             </Routes>
          </div>
          <Footer />
+         <UpButton/>
       </div>
    );
 };
