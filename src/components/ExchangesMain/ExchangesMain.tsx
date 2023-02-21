@@ -15,6 +15,11 @@ export const ExchangesMain = () => {
    const count = Math.ceil((globalData?.markets || 0) / 100) - 1;
    return (
       <div>
+         {data && (
+            <h1 className="exchanges__text">
+               Top Crypto Exchanges Ranked by Trust Score
+            </h1>
+         )}
          {data && <ExchangesTable data={data} />}
          {data && (
             <TablePagination count={count} page={page} setPage={setPage} />

@@ -1,4 +1,3 @@
-import { CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { ORDER } from '../../constants/order';
 import { coinsHeader } from '../../constants/tableHeaders';

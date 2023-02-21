@@ -1,12 +1,13 @@
 .header__nav {
-  display: flex;
-  gap: 10px;
+   display: flex;
+   gap: 40px;
+   font-size: 120%;
+   font-weight: bold;
 }
 
 .nav__link-text {
-
-  &:hover {
-    color: green;
-    cursor: pointer;
-  }
+   &:hover {
+      color: green;
+      cursor: pointer;
+   }
 }
