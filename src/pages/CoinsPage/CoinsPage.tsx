@@ -1,6 +1,7 @@
 import { CircularProgress } from '@mui/material';
 import { useParams } from 'react-router';
 import { CoinChart } from '../../components/charts/CoinChart';
+import { CoinChartTitle } from '../../components/CoinChartTitle';
 import { CoinDescription } from '../../components/CoinDescription';
 import { CoinDetailedStats } from '../../components/CoinDetailedStats';
 import { CoinInfo } from '../../components/CoinInfo';
@@ -24,7 +25,10 @@ export const CoinsPage = () => {
             <CoinInfo coin={data} />
           </div>
           <div className='coin-price-info'>
-            <CoinChart id={id} />
+            <div className='coin-chart'>
+              <CoinChartTitle coin={data} />
+              <CoinChart id={id} />
+            </div>
             <CoinDetailedStats coin={data} />
           </div>
           <CoinDescription coin={data} />
