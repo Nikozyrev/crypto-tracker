@@ -25,7 +25,7 @@ export const CoinDetailedStats: FC<ICoinDetailedStatsProps> = ({ coin }) => {
         {coin.symbol.toUpperCase()} Price Statistics
       </h2>
       <div>
-        <table>
+        <table className='stats-table'>
           <tbody>
             <tr>
               <th>
