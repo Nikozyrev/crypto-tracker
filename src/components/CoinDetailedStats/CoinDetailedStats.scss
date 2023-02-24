@@ -1,29 +1,29 @@
 .coin-detailed-stats {
-  width: 380px;
-  padding: 1rem;
-  background: #f3f4f6;
-  color: #4a4a4a;
-  border-radius: 20px;
-  &__title {
-    padding: 0.5rem;
-    color: #111827;
-  }
+   width: 380px;
+   padding: 1rem;
+   background: #f3f4f6;
+   color: #4a4a4a;
+   border-radius: 20px;
+   &__title {
+      padding: 0.5rem;
+      color: #111827;
+   }
 }
-table td,
-table th {
-  border: none;
-  border-bottom: 1px solid #dee2e6;
+.stats-table td,
+.stats-table th {
+   border: none;
+   border-bottom: 1px solid #dee2e6;
 }
-table {
-  margin: 0 auto;
-  th {
-    height: 100%;
-    text-align: left;
-    color: #6b7280;
-  }
-  td {
-    height: 100%;
-    text-align: right;
-    color: #111827;
-  }
+.stats-table {
+   margin: 0 auto;
+   th {
+      height: 100%;
+      text-align: left;
+      color: #6b7280;
+   }
+   td {
+      height: 100%;
+      text-align: right;
+      color: #111827;
+   }
 }

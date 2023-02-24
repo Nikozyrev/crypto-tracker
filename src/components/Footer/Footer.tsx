@@ -5,7 +5,7 @@ import rsImg from '../../assets/img/rslogo.png';
 export const Footer = () => {
    return (
       <footer className="footer">
-         <div className="footer__container">
+         <div className="footer__container _container">
             <div className="footer__git-links">
                <a href="https://github.com/K0nfigMDA">
                   <img

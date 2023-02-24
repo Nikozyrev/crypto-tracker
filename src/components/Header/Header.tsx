@@ -8,14 +8,14 @@ import './Header.scss';
 export const Header = () => {
    return (
       <header className="header">
-         <div className="header__container">
+         <div className="_container">
             <div className="header_above-panel">
                <HeaderGlobalData />
                <CurrencySelect />
             </div>
          </div>
          <div className="header_below-panel">
-            <div className="header__container _below-panel">
+            <div className="below-panel__container _container">
                <a
                   className="header__logo"
                   href="https://www.coingecko.com/en/api/documentation"
