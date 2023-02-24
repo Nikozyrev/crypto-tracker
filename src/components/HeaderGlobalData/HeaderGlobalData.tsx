@@ -36,7 +36,7 @@ export const HeaderGlobalData = () => {
                <div>
                   <span>Dominance: </span>
                   <span className="global-data__colored">
-                     BTC{`${data?.market_cap_percentage.btc.toFixed(1)}%`}
+                     BTC {`${data?.market_cap_percentage.btc.toFixed(1)}%`}
                   </span>
                   <span className="global-data__colored">
                      {' '}

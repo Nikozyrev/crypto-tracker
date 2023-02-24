@@ -27,7 +27,7 @@ export const CoinMainStats: FC<ICoinMainStatsProps> = ({ coin }) => {
         <span>{`${coin.market_data.price_change_percentage_24h_in_currency[currency].toFixed(1)}%`}</span>
       </div>
       <div className="coin-price-container">
-        <span className="coin-price">{`${coin.market_data.current_price[CURRENCIES.BTC].toFixed(8)} BTC`}</span>
+        <span className="coin-price">{`${priceFormatter(CURRENCIES.BTC, {min: 8})(coin.market_data.current_price[CURRENCIES.BTC])}`}</span>
         <span>{`${coin.market_data.price_change_percentage_24h_in_currency[CURRENCIES.BTC].toFixed(1)}%`}</span>
       </div>
       <CoinDailyPriceRange coin={coin}/>
