@@ -1,0 +1,27 @@
+.current-currency {
+  cursor: pointer;
+
+  &::after {
+    content: "▼";
+    font-size: 12px;
+    margin-left: 2px;
+  }
+}
+
+.currency-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.currency-option {
+  cursor: pointer;
+
+  &.active {
+    background-color: grey;
+  }
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+  }
+}
