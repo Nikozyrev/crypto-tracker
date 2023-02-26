@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
@@ -37,7 +38,7 @@ export const CoinSearch = () => {
          />
          {dropdown && (
             <ul className="coin-search__drop-down">
-               {isFetching && <div>Loading...</div>}
+               {isFetching && <CircularProgress color="primary" />}
                {data?.map((coin) => (
                   <li className="coin-search__item" key={coin.id}>
                      <Link
