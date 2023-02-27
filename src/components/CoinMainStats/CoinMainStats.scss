@@ -23,7 +23,19 @@
   display: flex;
   gap: 0.5em;
 }
-
+.coin-price.in-currency {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.change-percentage {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.in-btc {
+  line-height: 1.4;
+}
 .coin-global-stats {
   display: flex;
   flex-wrap: wrap;

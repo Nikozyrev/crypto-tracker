@@ -6,6 +6,7 @@ import { CoinDescription } from '../../components/CoinDescription';
 import { CoinDetailedStats } from '../../components/CoinDetailedStats';
 import { CoinInfo } from '../../components/CoinInfo';
 import { CoinMainStats } from '../../components/CoinMainStats';
+import { CoinPriceChangePercentage } from '../../components/CoinPriceChangePercentage';
 import { NotFoundMessage } from '../../components/NotFoundMessage';
 import { useGetCoinQuery } from '../../store/coingecko/coingecko.api';
 import './CoinsPage.scss';
@@ -28,6 +29,7 @@ export const CoinsPage = () => {
             <div className='coin-chart'>
               <CoinChartTitle coin={data} />
               <CoinChart id={id} />
+              <CoinPriceChangePercentage coin={data} />
             </div>
             <CoinDetailedStats coin={data} />
           </div>
