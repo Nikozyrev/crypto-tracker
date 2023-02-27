@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2%;
+  margin-bottom: 2rem;
 
   .coin-main-stats {
     flex: 1 1 60%;
@@ -11,8 +12,12 @@
 .coin-price-info {
   display: flex;
   gap: 2%;
+  justify-content: space-between;
 
-  .chart {
+  .coin-chart {
     flex: 1 1 60%;
   }
+}
+.coin-symbol {
+  text-transform: uppercase;
 }
