@@ -32,11 +32,11 @@ export const ExchangesTable = ({ data }: ExchangesProps) => {
    }
 
    return (
-      <table onClick={sortHandler}>
+      <table className="table" onClick={sortHandler}>
          <TableHead header={exchangesHeader} order={order} column={column} />
          <tbody>
             {sorted.map((el) => (
-               <ExchangesTableRow key={el.id} coin={el} />
+               <ExchangesTableRow key={el.id} exchange={el} />
             ))}
          </tbody>
       </table>

@@ -7,6 +7,7 @@ import {
 } from '../../store/coingecko/coingecko.api';
 import { TablePagination } from '../TablePagination';
 import { CoinsTable } from '../CoinsTable';
+import { COINS_PER_PAGE } from '../../constants/coins';
 import './CoinsMain.scss';
 
 export const CoinsMain = () => {
@@ -18,32 +19,32 @@ export const CoinsMain = () => {
       currency,
       page,
       ids: view ? favorites.join(',') : '',
+   }, {
+      pollingInterval: 30000,
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: 10
    });
    const { data: globalData } = useGetGlobalDataQuery();
    const coinsQnty = Math.ceil(
-      (globalData?.active_cryptocurrencies || 0) / 100
+      (globalData?.active_cryptocurrencies || 0) / COINS_PER_PAGE
    );
-   const favoritesQnty = Math.ceil(favorites.length / 100);
+   const favoritesQnty = Math.ceil(favorites.length / COINS_PER_PAGE);
    const count = view ? favoritesQnty : coinsQnty;
 
    const onClickHandler = () => {
       if (favorites.length > 0 && !view) {
          setView(true);
+         setPage(1);
       } else {
          setView(false);
       }
    };
-
-   const styles = {
-      marginY: 20,
-      marginX: 'auto',
-   };
-
    return (
       <div>
-         { data &&(
+         {data && (
             <Button
                onClick={onClickHandler}
+               disabled={!favorites.length}
                size="medium"
                sx={{ marginBottom: '20px', marginTop: '20px' }}
                variant="contained"

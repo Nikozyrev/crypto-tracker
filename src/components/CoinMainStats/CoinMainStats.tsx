@@ -1,12 +1,13 @@
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import { FC } from 'react';
-import { CURRENCIES } from '../../constants/currencies';
 import { colorChanger } from '../../helpers/colorChanger';
-import { priceFormatter } from '../../helpers/price';
-import { useAppSelector } from '../../hooks/redux';
-import { ICoinDetailed } from '../../interfaces/coinDetailed';
-import { CoinDailyPriceRange } from '../CoinDailyPriceRange';
-import './CoinMainStats.scss';
+import { CURRENCIES } from "../../constants/currencies";
+import { numberFormatter, priceFormatter } from "../../helpers/price";
+import { useAppSelector } from "../../hooks/redux";
+import { ICoinDetailed } from "../../interfaces/coinDetailed";
+import { CoinDailyPriceRange } from "../CoinDailyPriceRange";
+import "./CoinMainStats.scss";
+
 
 interface ICoinMainStatsProps {
   coin: ICoinDetailed;
@@ -39,9 +40,7 @@ export const CoinMainStats: FC<ICoinMainStatsProps> = ({ coin }) => {
         ].toFixed(1)}%`}</span>
       </div>
       <div className='coin-price-container'>
-        <span className='coin-price'>{`${coin.market_data.current_price[
-          CURRENCIES.BTC
-        ].toFixed(8)} BTC`}</span>
+        <span className='coin-price'>{`${priceFormatter(CURRENCIES.BTC, {min: 8})(coin.market_data.current_price[CURRENCIES.BTC])}`}</span>
         <span
           className='in-btc'
           style={{
@@ -74,29 +73,28 @@ export const CoinMainStats: FC<ICoinMainStatsProps> = ({ coin }) => {
           </li>
           <li className='coin-global-stats_item'>
             <span>Fully Diluted Valuation</span>
-            <span>
-              {priceFormatter(currency)(
-                coin.market_data.fully_diluted_valuation[currency]
-              )}
-            </span>
+            <span>{
+              coin.market_data.fully_diluted_valuation[currency] 
+                ? priceFormatter(currency)(coin.market_data.fully_diluted_valuation[currency])
+                : '-'
+              }</span>
           </li>
         </ul>
         <ul className='coin-tokenomics-stats'>
           <li className='coin-global-stats_item'>
             <span>Circulating Supply</span>
-            <span>{coin.market_data.circulating_supply}</span>
+            <span>{numberFormatter(coin.market_data.circulating_supply)}</span>
           </li>
           <li className='coin-global-stats_item'>
             <span>Total Supply</span>
-            <span>{coin.market_data.total_supply}</span>
+            <span>{numberFormatter(coin.market_data.total_supply)}</span>
           </li>
           <li className='coin-global-stats_item'>
             <span>Max Supply</span>
-            {coin.market_data.max_supply ? (
-              <span>{coin.market_data.max_supply}</span>
-            ) : (
-              <AllInclusiveIcon fontSize='inherit' />
-            )}
+            {coin.market_data.max_supply 
+              ? <span>{numberFormatter(coin.market_data.max_supply)}</span>
+              : <AllInclusiveIcon fontSize='inherit'/>
+            }
           </li>
         </ul>
       </div>

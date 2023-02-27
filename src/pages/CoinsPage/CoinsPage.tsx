@@ -11,12 +11,13 @@ import { NotFoundMessage } from '../../components/NotFoundMessage';
 import { useGetCoinQuery } from '../../store/coingecko/coingecko.api';
 import './CoinsPage.scss';
 
+
 export const CoinsPage = () => {
   const { id } = useParams();
   const { data, isFetching, isError } = useGetCoinQuery(id as string);
 
   return (
-    <main className='main'>
+    <>
       {isFetching && <CircularProgress color='primary' />}
       {isError && <NotFoundMessage />}
       {data && id && (
@@ -36,6 +37,6 @@ export const CoinsPage = () => {
           <CoinDescription coin={data} />
         </>
       )}
-    </main>
+    </>
   );
 };

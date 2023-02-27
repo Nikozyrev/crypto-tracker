@@ -1,6 +1,6 @@
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, Box, TextField } from "@mui/material";
 import { FC } from "react";
-import { CURRENCIES } from "../../constants/currencies";
+import { CURRENCIES, CURR_DESCRIPTION } from "../../constants/currencies";
 import { useGetSupportedVsCurrenciesQuery } from "../../store/coingecko/coingecko.api";
 
 interface IConverterCurrencySelectProps {
@@ -16,6 +16,12 @@ export const ConverterCurrencySelect: FC<IConverterCurrencySelectProps> = ({curr
       options={currencies || []}
       renderInput={(params) => <TextField {...params} label="
       Select Currency" />}
+      renderOption={(props, option) => (
+        <Box component="li" sx={{ '& > *': { mr: 2, flexShrink: 0 } }} {...props}>
+          <span>{CURR_DESCRIPTION[option].name}</span>
+          <span>{option.toUpperCase()}</span>
+        </Box>
+      )}
       value={currency}
       onChange={(_, v) => setCurrency(v || currency)}
       clearOnEscape
