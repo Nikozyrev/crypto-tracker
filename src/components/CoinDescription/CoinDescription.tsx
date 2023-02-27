@@ -46,7 +46,7 @@ export const CoinDescription: FC<ICoinDetailedStatsProps> = ({ coin }) => {
         Million BTC, Bitcoin is valued at a market cap of $481,152,627,744.
       </p>
       <h2 className='coin-description__title'>What is {coin.name}</h2>
-      <p id='coin-history'>{coin.description['en']}</p>
+      <p dangerouslySetInnerHTML={{__html: coin.description['en']}} className='coin-history'></p>
     </div>
   );
 };
