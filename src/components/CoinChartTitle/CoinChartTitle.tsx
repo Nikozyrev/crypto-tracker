@@ -18,11 +18,7 @@ export const CoinChartTitle: FC<ICoinDetailedStatsProps> = ({ coin }) => {
       <div className='chart__date'>
         <div>
           <p>
-            Last updated{' '}
-            <span>
-              {new Date(coin.last_updated).toLocaleTimeString('en-US')}
-            </span>{' '}
-            UTC. Currency in <span className='currency-code'>{currency}</span>.
+            Currency in <span className='currency-code'>{currency}</span>.
           </p>
         </div>
       </div>
