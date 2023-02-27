@@ -43,46 +43,46 @@ export const CoinPriceChangePercentage: FC<ICoinDetailedStatsProps> = ({
         <div>
           <span
             style={{
-              color: colorChanger(coin.market_data.price_change_percentage_24h),
+              color: colorChanger(coin.market_data.price_change_percentage_24h_in_currency[currency]),
             }}
           >
-            {coin.market_data.price_change_percentage_24h.toFixed(1)}%
+            {coin.market_data.price_change_percentage_24h_in_currency[currency].toFixed(1)}%
           </span>
         </div>
         <div>
           <span
             style={{
-              color: colorChanger(coin.market_data.price_change_percentage_7d),
+              color: colorChanger(coin.market_data.price_change_percentage_7d_in_currency[currency]),
             }}
           >
-            {coin.market_data.price_change_percentage_7d.toFixed(1)}%
+            {coin.market_data.price_change_percentage_7d_in_currency[currency].toFixed(1)}%
           </span>
         </div>
         <div>
           <span
             style={{
-              color: colorChanger(coin.market_data.price_change_percentage_14d),
+              color: colorChanger(coin.market_data.price_change_percentage_14d_in_currency[currency]),
             }}
           >
-            {coin.market_data.price_change_percentage_14d.toFixed(1)}%
+            {coin.market_data.price_change_percentage_14d_in_currency[currency].toFixed(1)}%
           </span>
         </div>
         <div>
           <span
             style={{
-              color: colorChanger(coin.market_data.price_change_percentage_30d),
+              color: colorChanger(coin.market_data.price_change_percentage_30d_in_currency[currency]),
             }}
           >
-            {coin.market_data.price_change_percentage_30d.toFixed(1)}%
+            {coin.market_data.price_change_percentage_30d_in_currency[currency].toFixed(1)}%
           </span>
         </div>
         <div>
           <span
             style={{
-              color: colorChanger(coin.market_data.price_change_percentage_1y),
+              color: colorChanger(coin.market_data.price_change_percentage_1y_in_currency[currency]),
             }}
           >
-            {coin.market_data.price_change_percentage_1y.toFixed(1)}%
+            {coin.market_data.price_change_percentage_1y_in_currency[currency].toFixed(1)}%
           </span>
         </div>
       </div>
