@@ -19,6 +19,7 @@ export const Header = () => {
                <a
                   className="header__logo"
                   href="https://www.coingecko.com/en/api/documentation"
+                  target="_blank"
                >
                   <img className="logo__img" src={logo} alt="logo" />
                   <span className="logo__api">API</span>
