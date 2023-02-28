@@ -1,0 +1,1 @@
+export {CoinsMain} from './CoinsMain'

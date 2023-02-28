@@ -1,0 +1,18 @@
+.chart {
+  padding: 1% 0;
+}
+
+.chart__control {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.chart__control_group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px;
+}

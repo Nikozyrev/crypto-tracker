@@ -1,0 +1,40 @@
+.header_above-panel {
+   display: flex;
+   justify-content: space-between;
+   padding: 20px 0;
+}
+
+.header_below-panel {
+   border-top: 2px solid #dee2e6;
+   border-bottom: 2px solid #dee2e6;
+   padding: 20px 0;
+   margin-bottom: 40px;
+}
+
+.header__container {
+   max-width: 1300px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
+.below-panel__container {
+   display: flex;
+   align-items: center;
+}
+
+.header__logo {
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   margin-right: 50px;
+}
+
+.logo__img {
+   width: 10rem;
+}
+
+.logo__api {
+   font-weight: bold;
+   font-size: 1.3rem;
+   color: #606060;
+}

@@ -1,0 +1,12 @@
+.currency-code {
+  text-transform: uppercase;
+}
+.chart {
+  &__name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  &__date {
+    margin-bottom: 0.5rem;
+  }
+}

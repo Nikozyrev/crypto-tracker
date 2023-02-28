@@ -1,0 +1,61 @@
+.coin-search__container {
+   position: relative;
+   margin-left: auto;
+}
+
+.coin-search__input {
+   background-color: rgb(243, 244, 246);
+   border: none;
+   padding: 0.75rem;
+   border-radius: 0.375rem;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 18rem;
+
+   &:focus {
+      outline: none;
+   }
+}
+
+.coin-search__drop-down {
+   position: absolute;
+   z-index: 10;
+   background-color: rgb(243, 244, 246);
+   max-height: 300px;
+   overflow-y: scroll;
+   width: 18rem;
+   border-radius: 10px;
+   box-shadow: -6px 10px 6px 0px rgba(34, 60, 80, 0.2);
+}
+
+.coin-search__drop-down::-webkit-scrollbar {
+   width: 5px;
+   border-radius: 5px;
+   background-color: #f6f6f6;
+}
+
+.coin-search__drop-down::-webkit-scrollbar-thumb {
+   background-color: #c6c6c6;
+   border-radius: 5px;
+}
+
+.coin-search__item {
+   padding: 10px;
+   border-radius: 5px;
+
+   &:hover {
+      background-color: #4eaf0a;
+      color: white;
+   }
+
+   a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+   }
+}
+
+.coin-search__rank {
+   margin-left: auto;
+}
